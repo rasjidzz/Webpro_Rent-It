@@ -11,7 +11,45 @@
             </div>
         </div>
         <div class="row my-5">
+            @foreach ($facilities as $facility)
             <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <div id="gedungTULT" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Assets/GedungPerkuliahan/TULT/TULT-2.jpg" class="d-block w-100" alt="tult1" class="rounded" width="300" height="300">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Assets/GedungPerkuliahan/TULT/TULT-1.jpeg" class="d-block w-100" alt="tult2" class="rounded" width="300" height="300">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#gedungTULT" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#gedungTULT" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="container">
+                            <h4>{{ $facility->name }}</h4>
+                            <div class="info">
+                                <p>
+                                    {{ $facility->description }}
+                                </p>
+                                <a class="btn btn-danger" onclick="openMoreInfoModal()">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-white py-1 pl-1 my-5" style="background-color: #b6252a;"></div>
+                </div>
+            </div>
+            @endforeach
+            {{-- <div class="container">
                 <div class="row">
                     <div class="col text-center">
                         <div id="gedungTULT" class="carousel slide" data-bs-ride="carousel">
@@ -162,7 +200,7 @@
                     </div>
                     <div class="text-white py-1 pl-1 my-5" style="background-color: #b6252a;"></div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

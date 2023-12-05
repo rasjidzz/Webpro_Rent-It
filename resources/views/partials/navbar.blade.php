@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid gap-3 mx-2">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand">
             <img src="/Assets/Logo_Rentit.png" style="max-width: 100px; height: auto;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
