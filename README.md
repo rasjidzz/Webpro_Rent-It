@@ -34,3 +34,10 @@ Rent-It dirancang dengan fokus pada kemudahan penggunaan, efisiensi, dan ketelit
 6. Ketik "php artisan serve" pada terminal
 7. Klik link yang terdapat pada terminal
 
+## Rent-It Developers 
+- Muhammad Risjad Shidqi Febian (1302213045)
+- Surya Aulia
+- Zhafran Hafizh
+- Stevent Rangga
+- Ashar Syahbudi Saleh
+- Gifari Juliandri
