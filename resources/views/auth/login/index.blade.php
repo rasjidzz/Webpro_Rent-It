@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
+<style>
+  .card-body{
+    background-color: #ed1e28;
+  }
+</style>
 <div class="row justify-content-center my-5">
     <div class="col-lg-4">
 
@@ -18,28 +23,36 @@
       @endif
 
         <main class="form-signin w-100 m-auto">
-            <h1 class="h3 mb-3 fw-normal text-center">Please Login</h1>
-            <form action="/login" method="POST">
-              @csrf
-              <div class="form-floating">
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" required autofocus value="{{ old('email') }}">
-                <label for="email">Email address</label>
-                @error('email')
-                  <div class="invalid-feedback">
-                    {{ $message }}
+            <h3 class="text-center ">Hello</h3> 
+            <h1 class=" mb-3 fw-normal text-center">Welcome to Rent-It !</h1>
+            <div class="card-body rounded">
+              <div class="px-3 mt-2">
+                <h4 class="text-center text-white">Login</h4>
+                <form action="/login" method="POST">
+                  @csrf
+                  <div class="form-group mt-2">
+                      <label for="username" class="label-access text-white mb-2">
+                        Email
+                      </label>
+                      <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" required autofocus value="{{ old('email') }}">
+                      @error('email')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
                   </div>
-                @enderror
+                  <div class="form-group mt-3">
+                    <label for="userpassword" class="text-white mb-2">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                  </div>
+                  <button class="btn btn-light btn-round btn-block w-100 text-dark mt-4">Login</button>
+                </form>
+                <small class="d-block text-center mt-3">
+                    Not registered ? 
+                    <a href="/register" class="text-decoration-none">Register now</a>
+                </small>
               </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                <label for="password">Password</label>
-              </div>
-              <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
-            </form>
-            <small class="d-block text-center mt-3">
-                Not registered ? 
-                <a href="/register">Register now</a>
-            </small>
+            </div>
           </main>
     </div>
 </div>

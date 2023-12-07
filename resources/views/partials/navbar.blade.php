@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav fs-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="/homepage">Home</a>
+                    <a class="nav-link {{  Request::is('homepage') ? 'active' : ' ' }}" href="/homepage">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/facility">Facility</a>
+                    <a class="nav-link {{  Request::is('facility') ? 'active' : ' ' }}" href="/facility">Facility</a>
                 </li>
                 @auth
                 <li class="nav-item dropdown">

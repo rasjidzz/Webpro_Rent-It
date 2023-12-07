@@ -12,6 +12,7 @@ class FacilityController extends Controller
         $data = [
             'title' => 'Facility',
             'facilities' => Facility::all()
+            // 'facilities' => Facility::paginate(5)->withQueryString()
         ];
         // dd($data);
         return view('modules.facility.index', $data);

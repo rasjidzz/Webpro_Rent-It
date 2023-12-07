@@ -3,15 +3,15 @@
 @section('container')
 
 <div class="masthead" style="background-image: url('/Assets/GKU.jpg');">
-    <div class="color-overlay d-flex justify-content-center align-items-center rounded">
-        <div class="container-fluid">
-            <div class="row mt-5">
+    <div class="color-overlay d-flex ">
+        <div class="container-fluid justify-content-center">
+            <div class="row-md-5 mt-5">
                 <div class="" style="text-align: center; color: white;">
                     <h1 style="font-weight: bold; color: white;">SELAMAT DATANG, MAU SEWA FASILITAS ?</h1>
                     <h1 style="font-weight: bold; color: white;">MASUK PAKAI AKUN SSO DULU YUK ?</h1>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row-md-5 mt-5">
                 <div class="" style="text-align: center;">
                     <h1 style="color: white;">Sign In</h1>
                 </div>
@@ -22,7 +22,7 @@
                     </a>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-5 justify-content-center">
                 <div class="col ms-3" style="text-align: start; color: white;">
                     <p class="fw-bold">Address</p>
                     <p>Gedung Panehan Pasca Sarjana Lantai 1,
