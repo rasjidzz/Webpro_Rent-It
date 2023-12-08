@@ -4,7 +4,7 @@
 
 <div class="masthead" style="background-image: url('/Assets/GKU.jpg');">
     <div class="color-overlay d-flex ">
-        <div class="container-fluid justify-content-center">
+        <div class="container-fluid justifyrt-content-center">
             <div class="row-md-5 mt-5">
                 <div class="" style="text-align: center; color: white;">
                     <h1 style="font-weight: bold; color: white;">SELAMAT DATANG, MAU SEWA FASILITAS ?</h1>
