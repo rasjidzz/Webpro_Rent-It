@@ -40,7 +40,9 @@
                         <button class="dropdown-item">Sign out</button>
                     </form>    
                 </li>
-                <li><a class="dropdown-item" >Status Pemesanan</a></li>
+                <li>
+                    <a class="dropdown-item" href="/status_pemesanan">Status Pemesanan</a>
+                </li>
             </ul>
         </div>
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
