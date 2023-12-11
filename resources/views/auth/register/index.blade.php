@@ -43,6 +43,15 @@
                     </div>
                     @enderror
                   </div>
+                  <div class="form-group mt-3">
+                    <label class="label-access text-white mb-2">NIM</label>
+                    <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" placeholder="NIM" name="nim" required value="{{ old('nim') }}" maxlength="10">
+                    @error('nim')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
                 <div class="form-group mt-3">
                   <label class="label-access text-white mb-2">Password</label>
                   <input type="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
