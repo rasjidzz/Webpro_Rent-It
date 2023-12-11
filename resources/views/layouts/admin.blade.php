@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li>
-                <a href="/submission" class="nav-link py-3 border-bottom >" title data-bs-toggle="tooltip"
+                <a href="/reservasi" class="nav-link py-3 border-bottom >" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Submission">
                     <span class="mdi mdi-file-account fs-5 text-black" role="img" aria-label="Submission"></span>
                 </a>
@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li>
-                <a href="/report" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
+                <a href="/kerusakan" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Report">
                     <span class="mdi mdi-account-alert fs-5 text-black" role="img" aria-label="Report"></span>
                 </a>

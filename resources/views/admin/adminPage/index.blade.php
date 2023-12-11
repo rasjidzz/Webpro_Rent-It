@@ -50,7 +50,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3" id="submission">
-                        <a href="/submission" class="text-decoration-none text-dark">
+                        <a href="/reservasi" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
@@ -89,7 +89,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-                        <a href="/report" class="text-decoration-none text-dark">
+                        <a href="/kerusakan" class="text-decoration-none text-dark">
                             <div class="card shadow-sm" id="report">
                                 <div class="card-body">
                                     <div class="icon-contain">
