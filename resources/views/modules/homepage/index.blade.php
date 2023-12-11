@@ -52,9 +52,9 @@
                 <p class="fs-1">Gedung</p>
                 <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
                   <option selected>Pilih gedung</option>
-                  <option value="1">Telkom University Convention Hall</option>
-                  <option value="2">Student Center</option>
-                  <option value="3">GSG (Gedung Serba Guna)</option>
+                  @foreach ($buildings as $building)
+                    <option value="{{ $building->id }}">{{ $building->name }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="col-lg-6">
@@ -62,7 +62,7 @@
                 <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
                 <div class="col" style="padding-top: 20px;">
                   <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                  <a class="btn" href= "" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                  <a class="btn" href= "/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
                 </div>
               </div>
             </div>
@@ -81,19 +81,18 @@
                 <p class="fs-1">Gedung</p>
                 <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
                   <option selected>Pilih gedung</option>
-                  <option value="1">Telkom University Landmark Tower</option>
-                  <option value="2">Gedung Kuliah Umum</option>
-                  <option value="3">Gedung A</option>
-                  <option value="4">Gedung B</option>
+                  @foreach ($classes as $gedung)
+                    <option value="{{ $gedung->id }}">{{ $gedung->name }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="col-lg-2">
                 <p class="fs-1">Kelas</p>
                 <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
                   <option selected>Pilih Kelas</option>
-                  <option value="1">07.13</option>
-                  <option value="2">03.11</option>
-                  <option value="3">6.10</option>
+                  @foreach ($classes as $gedung)
+                    {{-- <option value="">{{ $gedung->kelas->room }}</option> --}}
+                  @endforeach
                 </select>
               </div>
               <div class="col-lg-4">
@@ -101,7 +100,7 @@
                 <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
                 <div class="col" style="padding-top: 20px;">
                   <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                  <a class="btn" href="" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                  <a class="btn" href="/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
                 </div>
               </div>
             </div>
@@ -111,25 +110,25 @@
   
       <!-- button collapse for Sport -->
       <div class="row g-1">
-        <div class="collapse" id="multiCollapseExample3" style="width :100%"">
+        <div class="collapse" id="multiCollapseExample3" style="width :100%">
           <div class=" card card-body">
           <div class="dropdown row">
             <div class="col-lg-6 ">
               <p class="fs-1">Sport</p>
-              <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
-                <option selected>Pilih Lapangan</option>
-                <option value="1">lapangan Tenis</option>
-                <option value="2">Lapangan Futsal</option>
-                <option value="3">Lapangan Badminton</option>
-                <option value="4">Kolam Renang</option>
-              </select>
+                <!-- View -->
+                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
+                  <option selected>Pilih Lapangan</option>
+                  @foreach ($sports as $sport)
+                      <option value="{{ $sport->id }}">{{ $sport->name }}</option>
+                  @endforeach
+                </select>
             </div>
             <div class="col-lg-6">
               <p class="fs-1">Waktu</p>
-              <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
+              {{-- <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30"> --}}
+              <input type="date" id="tanggal_sewa" name="tanggal_sewa">
               <div class="col" style="padding-top: 20px;">
-                <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                <a class="btn" href="" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                <a class="btn" href="/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
               </div>
             </div>
           </div>
