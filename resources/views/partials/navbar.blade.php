@@ -30,19 +30,22 @@
         @auth
         <div class="flex-shrink-0 dropdown">
             <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                {{-- <img src="Assets/cristiano_profile.jpg" alt="mdo" width="32" height="32" class="rounded-circle"> --}}
-                Hello, {{ auth() ->user()->name}}
+                Hello, {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" href="">Status Pemesanan</a></li>
+                <li role="separator" class="dropdown-divider"></li> 
+                <li><span class="dropdown-item-text" >Saldo : </span></li>
+                <li><span class="dropdown-item-text" id="saldo"></span></li> 
+                <li role="separator" class="dropdown-divider"></li> 
                 <li>
                     <form action="/logout" method="POST">
                         @csrf
                         <button class="dropdown-item">Sign out</button>
-                    </form>    
+                    </form>
                 </li>
-                <li><a class="dropdown-item" >Status Pemesanan</a></li>
             </ul>
-        </div>
+        </div>        
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
@@ -51,3 +54,19 @@
         @endauth
     </div>
 </nav>
+
+<script>
+    @auth
+        const saldo = {{ auth()->user()->wallet->balance }};
+        const formattedSaldo = formatCurrency(saldo);
+
+        document.getElementById('saldo').innerText += formattedSaldo;
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount);
+        }
+    @else
+        // Jika pengguna belum login, sembunyikan elemen saldo
+        document.getElementById('saldo').style.display = 'none';
+    @endauth
+</script>

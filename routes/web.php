@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PembatalanController;
 use App\Http\Controllers\LaporankerusakanpageController;
+use App\Http\Controllers\RentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use App\Http\Controllers\LaporankerusakanpageController;
 */
 
 // Landing Page
-Route::get('/', [LandingpageController::class, 'index']);
+Route::get('/', [LandingpageController::class, 'index'])->middleware('guest');
 
 // Facility Page
 Route::get('/facility', [FacilityController::class, 'index']);
@@ -47,3 +48,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/rentpage', [RentController::class, 'index']);
+
+
