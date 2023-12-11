@@ -19,7 +19,7 @@ use App\Http\Controllers\RegisterController;
 */
 
 // Landing Page
-Route::get('/', [LandingpageController::class, 'index']);
+Route::get('/', [LandingpageController::class, 'index'])->middleware('guest');
 
 // Facility Page
 Route::get('/facility', [FacilityController::class, 'index']);
