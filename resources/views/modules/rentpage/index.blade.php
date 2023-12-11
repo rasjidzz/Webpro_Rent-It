@@ -103,7 +103,7 @@
                 </div>
                 <p id="acc" style="font-size: 12px; color:darkgrey;">Accepted File: .pdf .docx</p>
                 <form action="" id="tombol">
-                    <a class="btn btn-danger mt-3" type="submit" href="/pembayaran">Ajukan Permintaan</a>
+                    <a class="btn btn-danger mt-3" type="submit" href="/konfirmasi">Ajukan Permintaan</a>
                 </form>
             </div>
         </section>
