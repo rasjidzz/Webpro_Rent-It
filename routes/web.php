@@ -41,7 +41,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //pembayaran1
-Route::get('/pembayaran1', [PembayaranController::class, 'index'])->middleware('auth');
+Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
 
 //topup
 Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');

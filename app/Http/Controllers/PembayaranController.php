@@ -11,6 +11,6 @@ class PembayaranController extends Controller
         $data = [
             'title' => 'Pembayaran'
         ];
-        return view('modules.pembayaran1.index', $data);
+        return view('modules.konfirmasi.index', $data);
     }
 }

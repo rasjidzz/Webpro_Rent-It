@@ -4,7 +4,7 @@
 
 <section>
     <div class="container">
-        <h1 class="text-center fw-bold" style="margin-bottom: 10%; margin-top: 5%;">KONFIRMASI</h1>
+        <h1 class="text-center fw-bold" style="margin-bottom: 5%; margin-top: 5%;">KONFIRMASI</h1>
         <div class="row">
             <div class="col">
                 <div class="auto" style="margin-bottom: 10%;">
@@ -21,7 +21,7 @@
         </div>
         {{-- <h2 style="font-size: 25px; font-weight: bold;">Metode Pembayaran</h2> --}}
         <div class="row">
-            <div class="col">
+            <div class="col" style="margin-bottom: 7%">
                 <a class="btn btn-danger mb-5" id="" onclick="openModal()" style=" 
             color: rgb(255, 255, 255);
             font-weight: bold;
