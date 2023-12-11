@@ -9,7 +9,7 @@ class ReportController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Lapor_kerusakan'
+            'title' => 'LaporKerusakan'
         ];
         return view('admin.reportPage.index', $data);
     }

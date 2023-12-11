@@ -9,7 +9,7 @@ class SubmissionController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'reservasi'
+            'title' => 'Reservasi'
         ];
         return view('admin.submissionPage.index', $data);
     }

@@ -9,7 +9,7 @@ class StatusController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Status_pemesanan'
+            'title' => 'StatusPemesanan'
         ];
         return view('modules.orderStatusPage.index', $data);
     }
