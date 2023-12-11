@@ -20,8 +20,8 @@
                         Other
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" >Pembatalan</a></li>
-                        <li><a class="dropdown-item" >Lapor Kerusakan</a></li>
+                        <li><a class="nav-link {{  Request::is('pembatalanpage') ? 'active' : ' ' }}" href="/pembatalanpage" >Pembatalan</a></li>
+                        <li><a class="nav-link {{  Request::is('laporankerusakanpage') ? 'active' : ' ' }}" href="/laporankerusakanpage" >Laporan Kerusakan</a></li>
                     </ul>
                 </li>
                 @endauth
