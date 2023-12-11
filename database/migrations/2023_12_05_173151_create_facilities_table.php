@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('category');
             $table->string('slug')->unique();
             $table->text('description');
             $table->string('photo');
