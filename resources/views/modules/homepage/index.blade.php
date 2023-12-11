@@ -62,7 +62,7 @@
                 <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
                 <div class="col" style="padding-top: 20px;">
                   <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                  <a class="btn" href= "" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                  <a class="btn" href= "/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
                 <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
                 <div class="col" style="padding-top: 20px;">
                   <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                  <a class="btn" href="" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                  <a class="btn" href="/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@
               <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
               <div class="col" style="padding-top: 20px;">
                 <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                <a class="btn" href="" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
+                <a class="btn" href="/rentpage" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</a>
               </div>
             </div>
           </div>
