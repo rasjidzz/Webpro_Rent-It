@@ -7,6 +7,7 @@ use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\TopUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 //pembayaran1
 Route::get('/pembayaran1', [PembayaranController::class, 'index'])->middleware('auth');
+
+//topup
+Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
