@@ -13,5 +13,16 @@ class Facility extends Model
         'slug',
         'description',
         'photo',
+        'category'
     ];
+
+    public function getByCategory($category)
+    {
+        $facilities = Facility::where('category', $category)->get();
+        return $facilities;
+    }
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class);
+    }
 }
