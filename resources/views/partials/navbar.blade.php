@@ -33,7 +33,7 @@
                 Hello, {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="">Status Pemesanan</a></li>
+                <li><a class="dropdown-item" href="/status_pemesanan">Status Pemesanan</a></li>
                 <li role="separator" class="dropdown-divider"></li> 
                 <li><span class="dropdown-item-text" >Saldo : </span></li>
                 <li><span class="dropdown-item-text" id="saldo"></span></li> 
