@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\adminPageController;
+use App\Http\Controllers\approvedController;
+use App\Http\Controllers\cancellationController;
+use App\Http\Controllers\declinedController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
@@ -61,4 +65,14 @@ Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
 // Rent Page
 Route::get('/rentpage', [RentController::class, 'index']);
 
+//adminPage
+Route::get('/adminpage', [adminPageController::class, 'index']);
 
+//approved - Admin
+Route::get('/approved', [approvedController::class, 'index']);
+
+//cancellation - Admin
+Route::get('/cancellation', [cancellationController::class, 'index']);
+
+//declined - Admin
+Route::get('/declined', [declinedController::class, 'index']);
