@@ -21,7 +21,7 @@ use App\Http\Controllers\RentController;
 */
 
 // Landing Page
-Route::get('/', [LandingpageController::class, 'index']);
+Route::get('/', [LandingpageController::class, 'index'])->middleware('guest');
 
 // Facility Page
 Route::get('/facility', [FacilityController::class, 'index']);
@@ -41,5 +41,3 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/rentpage', [RentController::class, 'index']);
-
-
