@@ -39,6 +39,7 @@ Route::get('/facility', [FacilityController::class, 'index']);
 
 // Homepage
 Route::get('/homepage', [HomepageController::class, 'index'])->middleware('auth');
+Route::post('/updateKelas', [HomepageController::class, 'fetchKelasbyFacilityId']);
 
 //Pembatalanpage
 Route::get('/pembatalanpage', [PembatalanController::class, 'index'])->middleware('auth');
@@ -88,4 +89,3 @@ Route::get('/cancellation', [cancellationController::class, 'index']);
 
 //declined - Admin
 Route::get('/declined', [declinedController::class, 'index']);
-

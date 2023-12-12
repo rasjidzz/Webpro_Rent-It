@@ -79,7 +79,7 @@
             <div class="dropdown row">
               <div class="col-lg-6 ">
                 <p class="fs-1">Gedung</p>
-                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
+                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example" onchange="updateKelas()" id="gedungPerkuliahan">
                   <option selected>Pilih gedung</option>
                   @foreach ($classes as $gedung)
                     <option value="{{ $gedung->id }}">{{ $gedung->name }}</option>
@@ -88,11 +88,8 @@
               </div>
               <div class="col-lg-2">
                 <p class="fs-1">Kelas</p>
-                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
+                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example" id="kelasPerkuliahan">
                   <option selected>Pilih Kelas</option>
-                  @foreach ($classes as $gedung)
-                    {{-- <option value="">{{ $gedung->kelas->room }}</option> --}}
-                  @endforeach
                 </select>
               </div>
               <div class="col-lg-4">
@@ -199,5 +196,37 @@
     $('#btn_Olahraga').on('click', function() {
       $('#multiCollapseExample1, #multiCollapseExample2').collapse('hide');
     });
+
+    function updateKelas(){
+      var gedung = document.getElementById('gedungPerkuliahan').value;
+      // console.log(gedung);
+      $.ajax({
+        type: 'POST',
+        url: '/updateKelas',
+        data: {
+            facility_id: gedung,
+            _token: '{{ csrf_token() }}',
+        },
+        success: function (response) {
+            var dropdown = $('#kelasPerkuliahan');
+            dropdown.empty();
+
+            if (response.length != 0){
+              for (var i = 0; i < response.length; i++) {
+                  var room = response[i]['room'];
+                  var option = $('<option></option>').attr('value', room).text(room);
+                  dropdown.append(option);
+              }
+            }else{
+                var defaultOption = $('<option></option>').attr('value', '').text('Pilih Kelas');
+                dropdown.append(defaultOption);
+            }
+        },
+        error: function (xhr, status, error) {
+            // Handle kesalahan jika terjadi
+            console.error(error);
+        }
+      })
+    }
   </script>
 @endsection

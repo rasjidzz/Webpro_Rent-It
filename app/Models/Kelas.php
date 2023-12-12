@@ -13,4 +13,9 @@ class Kelas extends Model
     {
         return $this->belongsTo(Facility::class);
     }
+    public function getKelasbyFacilityId($facility_id)
+    {
+        $kelas = Kelas::where('id_facility', $facility_id)->get();
+        return $kelas;
+    }
 }
