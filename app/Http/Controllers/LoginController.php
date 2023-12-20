@@ -24,6 +24,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            if (Auth::user()->isAdmin) {
+                return redirect()->intended('/admin/dashboard');
+            }
             return redirect()->intended('/homepage');
         } else {
             return back()->with('loginError', 'Login Failed !');

@@ -63,12 +63,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 //Status Pemesanan
 Route::get('/status_pemesanan', [StatusController::class, 'index']);
 
-//Admin Permintaan Reservasi
-Route::get('/reservasi', [SubmissionController::class, 'index']);
-
-//Admin Lapor Kerusakan
-Route::get('/kerusakan', [ReportController::class, 'index']);
-
 // Pembayaran 
 Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
 
@@ -78,14 +72,28 @@ Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
 // Rent Page
 Route::get('/rentpage', [RentController::class, 'index']);
 
-//adminPage
-Route::get('/adminpage', [adminPageController::class, 'index']);
+// ROUTES UNTUK ADMIN
 
-//approved - Admin
-Route::get('/approved', [approvedController::class, 'index']);
+// // Dashboard - Admin
+// Route::get('/admin/dashboard', [adminPageController::class, 'index'])->middleware('auth');
+Route::get('/admin/dashboard', [adminPageController::class, 'index'])->middleware(['auth', 'admin']);
 
-//cancellation - Admin
-Route::get('/cancellation', [cancellationController::class, 'index']);
+// // Approved - Admin
+// Route::get('/admin/approved', [approvedController::class, 'index'])->middleware('auth');
+Route::get('/admin/approved', [approvedController::class, 'index'])->middleware(['auth', 'admin']);
 
-//declined - Admin
-Route::get('/declined', [declinedController::class, 'index']);
+// // Cancellation - Admin
+// Route::get('/admin/cancellation', [cancellationController::class, 'index'])->middleware('auth');
+Route::get('/admin/cancellation', [cancellationController::class, 'index'])->middleware(['auth', 'admin']);
+
+// // Declined - Admin
+// Route::get('/admin/declined', [declinedController::class, 'index'])->middleware('auth');
+Route::get('/admin/declined', [declinedController::class, 'index'])->middleware(['auth', 'admin']);
+
+// // Permintaan Reservasi - Admin
+// Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middleware('auth');
+Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middleware(['auth', 'admin']);
+
+// // Lapor Kerusakan - Admin
+// Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware('auth');
+Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware(['auth', 'admin']);

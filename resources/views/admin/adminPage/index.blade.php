@@ -14,17 +14,19 @@
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="flex-shrink-0 dropdown ">
-                        <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="Assets/cristiano_profile.jpg" alt="mdo" width="32" height="32"
-                                class="rounded-circle">
+                    <div class="flex-shrink-0 dropdown">
+                        <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item">Sign out</button>
+                                </form>
+                            </li>
                         </ul>
-                    </div>
+                    </div>     
                 </div>
             </nav>
 

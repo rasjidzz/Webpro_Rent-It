@@ -27,7 +27,7 @@
                 </div>
                   <div class="form-group mt-3">
                     <label class="label-access text-white mb-2">Username</label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Full Name" name="username" required value="{{ old('username') }}">
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="username" name="username" required value="{{ old('username') }}">
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}

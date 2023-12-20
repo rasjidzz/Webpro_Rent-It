@@ -42,60 +42,47 @@
         </a>
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center mt-auto shadow-lg">
             <li class="nav-item">
-                <a href="/adminpage" class="nav-link py-3 border-bottom" aria-current="page" title
+                <a href="/admin/dashboard" class="nav-link py-3 border-bottom" aria-current="page" title
                     data-bs-toggle="tooltip" data-bs-placement="right" data-bs-orginial-title="Home">
                     <span class="mdi mdi-home fs-5 text-black" role="img" aria-label="Home"></span>
                 </a>
             </li>
             <li>
-                <a href="/approved" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
+                <a href="/admin/approved" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Approved">
                     <span class="mdi mdi-account-check fs-5 text-black" role="img" aria-label="Approved"></span>
                 </a>
             </li>
             <li>
-                <a href="/reservasi" class="nav-link py-3 border-bottom >" title data-bs-toggle="tooltip"
+                <a href="/admin/reservasi" class="nav-link py-3 border-bottom >" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Submission">
                     <span class="mdi mdi-file-account fs-5 text-black" role="img" aria-label="Submission"></span>
                 </a>
             </li>
             <li>
-                <a href="/declined" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
+                <a href="/admin/declined" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Declined">
                     <span class="mdi mdi-account-remove fs-5 text-black" role="img" aria-label="Declined"></span>
                 </a>
             </li>
             <li>
-                <a href="/cancellation" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
+                <a href="/admin/cancellation" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Cancellation">
                     <span class="mdi mdi-account-cancel fs-5 text-black" role="img"
                         aria-label="Cancellation"></span>
                 </a>
             </li>
             <li>
-                <a href="/kerusakan" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
+                <a href="/admin/kerusakan" class="nav-link py-3 border-bottom" title data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-orginial-title="Report">
                     <span class="mdi mdi-account-alert fs-5 text-black" role="img" aria-label="Report"></span>
                 </a>
             </li>
         </ul>
-        <div class="dropdown border-top" style="background-color: white;">
-            <a href="#"
-                class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/Assets/cristiano_profile.jpg" alt="pp" class="rounded-circle" width="24"
-                    height="24">
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
-                <li>
-                    <a href="#" class="dropdown-item">Sign Out</a>
-                </li>
-            </ul>
-        </div>
     </div>
 
-    @yield('content')
 </body>
+@yield('content')
 
 <script></script>
 

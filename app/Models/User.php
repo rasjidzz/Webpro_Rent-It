@@ -22,7 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
-        'nim'
+        'nim',
+        'isAdmin'
     ];
 
     protected $guarded = ['id'];

@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 class adminPageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index()
     {
         $data = [
-            'title' => 'AdminPage'
+            'title' => 'Dashboard'
         ];
         return view('admin.adminPage.index', $data);
     }
