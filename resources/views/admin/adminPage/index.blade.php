@@ -4,32 +4,6 @@
 
     <body style="background-color: #EDF0F5;">
         <div class="d-flex flex-column w-100">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
-                <div class="container-fluid gap-3 mx-2">
-                    <a class="navbar-brand" href="">
-                        <img src="/Assets/Logo_Rentit.png" style="max-width: 100px; height: auto;">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="flex-shrink-0 dropdown">
-                        <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hello, {{ auth()->user()->name }}
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li>
-                                <form action="/logout" method="POST">
-                                    @csrf
-                                    <button class="dropdown-item">Sign out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>     
-                </div>
-            </nav>
-
             <div class="container text-center mt-3">
                 <div class="row">
                     <div class="col-lg-3" id="approved">

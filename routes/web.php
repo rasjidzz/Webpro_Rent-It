@@ -97,3 +97,6 @@ Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middlewa
 // // Lapor Kerusakan - Admin
 // Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware('auth');
 Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware(['auth', 'admin']);
+
+// Add Fasilitas - Admin
+Route::get('/admin/addfacility', [FacilityController::class, 'addFacility'])->middleware(['auth', 'admin']);
