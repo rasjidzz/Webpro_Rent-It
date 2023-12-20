@@ -72,15 +72,6 @@ class FacilitySeeder extends Seeder
                 'photo' => 'kolam_renang.jpg',
                 'category' => 'buildings'
             ],
-            [
-                'name' => 'Auditorium',
-                'slug' => 'auditorium',
-                'description' => 'Gedung perkuliahan "TULT" merupakan tempat yang ideal untuk berbagai kegiatan akademis dan non-akademis.
-                Kelas-kelas di gedung ini dirancang untuk memfasilitasi pembelajaran yang efektif dan suasana yang kondusif.
-                Setiap ruangan dilengkapi dengan peralatan modern, seperti proyektor, layar proyeksi, dan papan tulis interaktif.',
-                'photo' => 'kolam_renang.jpg',
-                'category' => 'buildings'
-            ],
         ];
         DB::table('facilities')->insert($facilities);
     }

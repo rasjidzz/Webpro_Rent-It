@@ -61,7 +61,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //Status Pemesanan
-Route::get('/status_pemesanan', [StatusController::class, 'index']);
+Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware('auth');
 
 // Pembayaran 
 Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
@@ -70,7 +70,7 @@ Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('a
 Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
 
 // Rent Page
-Route::get('/rentpage', [RentController::class, 'index']);
+Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
 
 // ROUTES UNTUK ADMIN
 
