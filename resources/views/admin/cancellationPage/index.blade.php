@@ -26,8 +26,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <img src="Assets/GedungPerkuliahan/TULT/TULT-2.jpg" alt="Gedung" width="90px"
-                                height="90px">
+                            <img src="Assets/Fasilitas/TULT-2.jpg" alt="TULT-2" width="90px"height="90px">
                         </td>
                         <td>
                             <p>GIFARI JULIANDRI</p>

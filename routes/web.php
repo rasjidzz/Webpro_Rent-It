@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminFacilityController;
 use App\Http\Controllers\adminPageController;
 use App\Http\Controllers\approvedController;
 use App\Http\Controllers\cancellationController;
@@ -99,4 +100,5 @@ Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middlewa
 Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware(['auth', 'admin']);
 
 // Add Fasilitas - Admin
-Route::get('/admin/addfacility', [FacilityController::class, 'addFacility'])->middleware(['auth', 'admin']);
+// Route::get('/admin/addfacility', [FacilityController::class, 'addFacility'])->middleware(['auth', 'admin']);
+Route::resource('/admin/facility', AdminFacilityController::class)->middleware(['auth', 'admin']);

@@ -18,10 +18,12 @@
                         <div id="{{ $facility->slug }}" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
+                                    {{-- <img src="Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300"> --}}
+                                    <img src="Storage/fasilitas/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="Assets/Fasilitas/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-1" class="rounded" width="300" height="300">
+                                    {{-- <img src="Assets/Fasilitas/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-1" class="rounded" width="300" height="300"> --}}
+                                    <img src="Storage/fasilitas/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="prev">
@@ -38,6 +40,11 @@
                         <div class="container">
                             <h4>{{ $facility->name }}</h4>
                             <div class="info">
+                                @auth
+                                <p>
+                                    Harga : {{ $facility->harga }}
+                                </p>
+                                @endauth
                                 <p>
                                     {{ $facility->description }}
                                 </p>
@@ -49,6 +56,9 @@
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="d-flex justify-content-center">
+            {!! $facilities->links() !!}
         </div>
     </div>
 </section>

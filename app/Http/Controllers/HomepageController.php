@@ -19,9 +19,9 @@ class HomepageController extends Controller
     {
         $data = [
             'title' => 'Homepage',
-            'sports' => $this->facilityModel->getByCategory('sports'),
-            'buildings' => $this->facilityModel->getByCategory('buildings'),
-            'classes' => $this->facilityModel->getByCategory('classes')
+            'sports' => $this->facilityModel->getByCategory(3),
+            'buildings' => $this->facilityModel->getByCategory(2),
+            'classes' => $this->facilityModel->getByCategory(1)
         ];
         // dd($data);
         return view('modules.homepage.index', $data);

@@ -23,8 +23,8 @@ class FacilitySeeder extends Seeder
                 'description' => 'Gedung perkuliahan "TULT" merupakan tempat yang ideal untuk berbagai kegiatan akademis dan non-akademis.
                 Kelas-kelas di gedung ini dirancang untuk memfasilitasi pembelajaran yang efektif dan suasana yang kondusif.
                 Setiap ruangan dilengkapi dengan peralatan modern, seperti proyektor, layar proyeksi, dan papan tulis interaktif.',
-                'photo' => 'kolam_renang.jpg',
-                'category' => 'classes'
+                'category_id' => 1,
+                'harga' => 150000
             ],
             [
                 'name' => 'GKU',
@@ -33,8 +33,8 @@ class FacilitySeeder extends Seeder
                 Setiap kelas didesain dengan perhatian khusus untuk menciptakan lingkungan belajar yang optimal.
                 Fasilitas modern, seperti proyektor, layar proyeksi, dan papan tulis interaktif, tersedia untuk mendukung
                 kegiatan pembelajaran yang efektif.',
-                'photo' => 'ruang_pertemuan.jpg',
-                'category' => 'classes'
+                'category_id' => 1,
+                'harga' => 100000
             ],
             [
                 'name' => 'Gedung Damar',
@@ -43,16 +43,16 @@ class FacilitySeeder extends Seeder
                 Setiap kelas didesain dengan perhatian khusus untuk menciptakan lingkungan belajar yang optimal.
                 Fasilitas modern, seperti proyektor, layar proyeksi, dan papan tulis interaktif, tersedia untuk mendukung
                 kegiatan pembelajaran yang efektif.',
-                'photo' => 'ruang_pertemuan.jpg',
-                'category' => 'classes'
+                'category_id' => 1,
+                'harga' => 200000
             ],
             [
                 'name' => 'Lapangan Tennis',
                 'slug' => 'lapangan-tenis',
                 'description' => 'Lapangan tennis universitas adalah fasilitas olahraga yang luar biasa dan dapat dijadikan tempat yang ideal untuk berbagai kegiatan yang melibatkan aktivitas fisik dan rekreasi.
                 Lapangan tennis di universitas kami memiliki ciri khas yang membuatnya menjadi pilihan yang tepat untuk disewa.',
-                'photo' => 'ruang_pertemuan.jpg',
-                'category' => 'sports'
+                'category_id' => 3,
+                'harga' => 200000
             ],
             [
                 'name' => 'Lapangan Basket',
@@ -60,17 +60,17 @@ class FacilitySeeder extends Seeder
                 'description' => 'Lapangan basket universitas kami adalah tempat yang dinamis dan energik yang dapat disewa untuk berbagai kegiatan.
                 Dirancang untuk memenuhi standar tertinggi, lapangan basket ini menjadi pilihan ideal untuk melibatkan komunitas dalam olahraga, rekreasi,
                 dan kegiatan sosial.',
-                'photo' => 'ruang_pertemuan.jpg',
-                'category' => 'sports'
+                'category_id' => 3,
+                'harga' => 150000
             ],
             [
                 'name' => 'Gedung Serba Guna (GSG)',
-                'slug' => 'gsg',
+                'slug' => 'gedung-serba-guna',
                 'description' => 'Gedung perkuliahan "TULT" merupakan tempat yang ideal untuk berbagai kegiatan akademis dan non-akademis.
                 Kelas-kelas di gedung ini dirancang untuk memfasilitasi pembelajaran yang efektif dan suasana yang kondusif.
                 Setiap ruangan dilengkapi dengan peralatan modern, seperti proyektor, layar proyeksi, dan papan tulis interaktif.',
-                'photo' => 'kolam_renang.jpg',
-                'category' => 'buildings'
+                'category_id' => 2,
+                'harga' => 250000
             ],
         ];
         DB::table('facilities')->insert($facilities);

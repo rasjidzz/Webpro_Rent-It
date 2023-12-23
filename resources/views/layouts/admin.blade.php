@@ -33,7 +33,7 @@
 
 </head>
 <body>
-    <div class="text-white py-2 pl-2 sticky-top" style="background-color: #b6252a;"></div>
+    <div class="text-white py-2 pl-2 sticky-top" style="background-color: #000000;"></div>
     
     @include('admin.partials.navbar')
 

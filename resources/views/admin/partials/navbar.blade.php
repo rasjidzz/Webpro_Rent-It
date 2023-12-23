@@ -30,7 +30,7 @@
                   <a class="nav-link {{  Request::is('admin/cancellation') ? 'active' : ' ' }}" aria-current="page" href="/admin/cancellation">Cancellation</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {{  Request::is('admin/addfacility') ? 'active' : ' ' }}" aria-current="page" href="/admin/addfacility">Add Facility</a>
+                  <a class="nav-link {{  Request::is('admin/addfacility') ? 'active' : ' ' }}" aria-current="page" href="/admin/facility">Facility</a>
                 </li>
             </ul>
           </div>
