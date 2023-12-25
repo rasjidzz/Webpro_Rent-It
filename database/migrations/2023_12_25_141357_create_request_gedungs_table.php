@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('request_gedungs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('facility_id')->constrained('facilities');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamp('tanggal');
+            $table->string('nama_file');
+            $table->string('file_path');
+            $table->string('nomor_tlp');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('request_gedungs');
     }
 };

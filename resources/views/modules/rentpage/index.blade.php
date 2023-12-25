@@ -56,11 +56,10 @@
         <section class="row gap-4 justify-content-center">
             <div id="box1" class="col-sm-4 w-30 rounded-3 border border-1 border-secondary px-0">
                 <!-- $s->gambar -->
-                <img src="/Assets/GedungPerkuliahan/GKU/GKU-1.jpg" class="card-img-top">
+                <img src="{{ $facility->first()->image }}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Gedung Kuliah Umum</h5>
-                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eum assumenda
-                        error distinctio quibusdam, quod incidunt sequi repudiandae quasi unde!</p>
+                    <h4 class="card-title text-center">{{ $facility->first()->name }}</h4>
+                    <p class="card-text">{{ $facility->first()->description }}</p>
                 </div>
             </div>
             <div id="box2" class="col-sm-6 w-40 rounded-3 border border-1 border-secondary">
