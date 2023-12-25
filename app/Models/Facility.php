@@ -24,6 +24,11 @@ class Facility extends Model
         $facilities = Facility::where('category_id', $category)->get();
         return $facilities;
     }
+    public function getByID($facility_id)
+    {
+        $facility = Facility::where('id', $facility_id)->first();
+        return $facility;
+    }
     public function kelas()
     {
         return $this->hasMany(Kelas::class);
@@ -31,5 +36,9 @@ class Facility extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

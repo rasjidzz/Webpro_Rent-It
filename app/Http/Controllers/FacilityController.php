@@ -18,13 +18,4 @@ class FacilityController extends Controller
         // dd($data);
         return view('modules.facility.index', $data);
     }
-
-    public function addFacility()
-    {
-        $data = [
-            'title' => 'Add Facility',
-            'facilities' => Facility::all()
-        ];
-        return view('admin.addFacilityPage.index', $data);
-    }
 }

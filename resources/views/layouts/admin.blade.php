@@ -18,6 +18,9 @@
 
     <!-- MDI (Icon) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <!-- Tambahkan di bagian head HTML atau footer sebelum penutup body -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
     <style>
