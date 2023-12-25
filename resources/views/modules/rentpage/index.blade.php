@@ -68,17 +68,17 @@
                     Pengguna</h3>
                 <div class="mb-3 ">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama">
+                    <input type="text" class="form-control" id="nama" value="{{ $user->first()->name }}">
                     <div id="errorNama" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
                     <label for="nim" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="nim">
+                    <input type="number" class="form-control" id="nim" value="{{ $user->first()->nim }}">
                     <div id="errorNim" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" class="form-control" id="email" value="{{ $user->first()->email }}">
                     <div id="errorEmail" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
