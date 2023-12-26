@@ -52,28 +52,13 @@ class AdminFacilityController extends Controller
      */
     public function store(Request $request)
     {
-        // // Without Foto
-        // $validatedData = $request->validate([
-        //     'name' => 'required|max:255',
-        //     'slug' => 'required|unique:facilities',
-        //     'category_id' => 'required',
-        //     'harga' => 'required',
-        //     'description' => 'required'
-        // ]);
-
-        // // print_r($validatedData);
-        // Facility::create($validatedData);
-        // return redirect('/admin/facility')->with('success', 'New Post has been added !');
-
-        // With Foto
-        // ddd($request);
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|unique:facilities',
             'category_id' => 'required',
             'harga' => 'required',
             'description' => 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Aturan validasi untuk file gambar
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $imagePaths = [];
@@ -124,7 +109,7 @@ class AdminFacilityController extends Controller
     public function edit(Facility $facility)
     {
         $data = [
-            'title' => 'Add Facility',
+            'title' => 'Edit Facility',
             'categories' => Category::all(),
             'facility' => $facility
         ];
@@ -138,15 +123,20 @@ class AdminFacilityController extends Controller
      * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
+    // sebelum
     public function update(Request $request, Facility $facility)
     {
+        // ddd($request);
         $rules = [
             'category_id' => 'required',
             'harga' => 'required',
             'description' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahan
         ];
 
         $validatedData = $request->validate($rules);
+
+        // // print_r($validatedData);
         Facility::where('id', $facility->id)
             ->update($validatedData);
 

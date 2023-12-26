@@ -60,9 +60,14 @@
                 </p>
                 @enderror
               </div>
-              {{-- <div class="mb-3">
+              <div class="mb-3">
                 <label for="image" class="form-label">Image 1</label>
-                <input type="file" class="form-control @error('image.0') is-invalid @enderror" id="image" name="image[]">
+                @if ($facility->image)
+                    <img src="{{ asset('storage/' . explode(', ', $facility->image)[0]) }}" class="img-preview-1 img-fluid mb-3 col-sm-5 d-block" alt="Image 1"> 
+                @else
+                    <img class="img-preview-1 img-fluid mb-3 col-sm-5">
+                @endif
+                {{-- <input type="file" class="form-control @error('image.0') is-invalid @enderror" id="image" name="image[]" onchange="previewImage()"> --}}
                 @error('image.0')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -71,13 +76,18 @@
               </div>
               <div class="mb-3">
                   <label for="image2" class="form-label">Image 2</label>
-                  <input type="file" class="form-control @error('image.1') is-invalid @enderror" id="image2" name="image[]">
+                @if ($facility->image)
+                    <img src="{{ asset('storage/' . explode(', ', $facility->image)[1]) }}" class="img-preview-2 img-fluid mb-3 col-sm-5 d-block" alt="Image 2">
+                @else
+                    <img class="img-preview-2 img-fluid mb-3 col-sm-5">
+                @endif
+                  {{-- <input type="file" class="form-control @error('image.1') is-invalid @enderror" id="image2" name="image[]" onchange="previewImage2()"> --}}
                   @error('image.1')
                       <div class="invalid-feedback">
                           {{ $message }}
                       </div>
                   @enderror
-              </div> --}}
+              </div>
             <button type="submit" class="btn btn-danger">Update Facility</button>
         </form>
     </div>
@@ -93,6 +103,32 @@
       slug.value = slugValue;
   });
 
+  function previewImage(){
+    const image1 = document.querySelector("#image");
+    const imgPreview1 = document.querySelector(".img-preview-1");
+
+    imgPreview1.style.display = "block";
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image1.files[0]);
+
+    oFReader.onload = function(oFREvent){
+      imgPreview1.src = oFREvent.target.result;
+    }
+  }
+  function previewImage2(){
+    const image2 = document.querySelector("#image2");
+    const imgPreview2 = document.querySelector(".img-preview-2");
+
+    imgPreview2.style.display = "block";
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image2.files[0]);
+
+    oFReader.onload = function(oFREvent){
+      imgPreview2.src = oFREvent.target.result;
+    }
+  }
 </script>
 
 @endsection

@@ -9,12 +9,17 @@ class FacilityController extends Controller
 {
     public function index()
     {
-        $data = [
-            'title' => 'Facility',
-            // 'facilities' => Facility::all()
-            'facilities' => Facility::paginate(7)
-            // 'facilities' => Facility::paginate(5)->withQueryString()
-        ];
+        if ((Facility::count() - 5) < 2) {
+            $data = [
+                'title' => 'Facility',
+                'facilities' => Facility::paginate(Facility::count()),
+            ];
+        } else {
+            $data = [
+                'title' => 'Facility',
+                'facilities' => Facility::paginate(5),
+            ];
+        }
         // dd($data);
         return view('modules.facility.index', $data);
     }
