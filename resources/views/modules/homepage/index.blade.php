@@ -52,25 +52,25 @@
                 <div class="collapse " id="multiCollapseExample1" style="width :100%; padding-left: 0;padding-right: 0;">
                     <div class="card card-body">
                         <div class="dropdown row">
+                            {{-- COBA --}}
                             <div class="col-lg-6">
                                 <p class="fs-1">Gedung</p>
-                                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
-                                    <option selected>Pilih gedung</option>
-                                    @foreach ($buildings as $building)
+                                <form action="/checkAvailability" method="POST">
+                                    @csrf
+                                    <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example" name="facility_id" id="facility_id">
+                                        <option selected>Pilih gedung</option>
+                                        @foreach ($buildings as $building)
                                         <option value="{{ $building->id }}">{{ $building->name }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
-                                <p class="fs-1">Tanggal</p>
-                                <input type="date" class="form-control  form-select-lg mb-3 col-4"
-                                    aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
-                                <div class="col" style="padding-top: 20px;">
-                                    <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
-                                    <a class="btn" href= "#"
-                                        style="background-color: #9f1521; color: #fff;border-color: #9f1521;" onclick="return validateForm() ? window.location.href='/rentpage' : null">Submit</a>
+                                    </select>
                                 </div>
-                            </div>
+                                <div class="col-lg-6">
+                                    <p class="fs-1">Tanggal</p>
+                                    <input type="date" class="form-control  form-select-lg mb-3 col-4" name="tanggalSewa" id="tanggalSewa" required>
+                                    <button class="btn" type="submit" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button>
+                                </div>
+                            </form>
+                            {{-- COBA --}}
                         </div>
                     </div>
                 </div>
@@ -102,10 +102,9 @@
                             </div>
                             <div class="col-lg-4">
                                 <p class="fs-1">Tanggal</p>
-                                <input type="date" class="form-control  form-select-lg mb-3 col-4"
+                                <input type="date" class="form-control  form-select-lg mb-3 col-4" id="tanggal_sewa"
                                     aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
                                 <div class="col" style="padding-top: 20px;">
-                                    <!-- <button class="btn " style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button> -->
                                     <a class="btn" href="#"
                                         style="background-color: #9f1521; color: #fff;border-color: #9f1521; " onclick="return validateForm() ? window.location.href='/rentpage' : null">Submit</a>
                                 </div>
@@ -123,22 +122,21 @@
                             <div class="col-lg-6 ">
                                 <p class="fs-1">Sport</p>
                                 <!-- View -->
-                                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example">
-                                    <option selected>Pilih Lapangan</option>
-                                    @foreach ($sports as $sport)
+                                <form action="/checkAvailability" method = "POST">
+                                    @csrf
+                                    <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example" id="facility_id" name="facility_id">
+                                        <option selected>Pilih Lapangan</option>
+                                        @foreach ($sports as $sport)
                                         <option value="{{ $sport->id }}">{{ $sport->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
-                                <p class="fs-1">Tanggal</p>
-                                {{-- <input type="text" class="form-control  form-select-lg mb-3 col-4" aria-label="Large select example" placeholder="Contoh : 12.30-15.30"> --}}
-                                <input type="date" id="tanggal_sewa" name="tanggal_sewa" class="form-control  form-select-lg mb-3 col-4">
-                                <div class="col" style="padding-top: 20px;">
-                                    <a class="btn" href="#"
-                                        style="background-color: #9f1521; color: #fff;border-color: #9f1521;" onclick="return validateForm() ? window.location.href='/rentpage' : null">Submit</a>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
+                                <div class="col-lg-6">
+                                    <p class="fs-1">Tanggal</p>
+                                    <input type="date" id="tanggalSewa" name="tanggalSewa" class="form-control  form-select-lg mb-3 col-4">
+                                    <button class="btn" type="submit" style="background-color: #9f1521; color: #fff;border-color: #9f1521;">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -253,11 +251,11 @@
         var tanggal = document.getElementById('tanggal_sewa').value;
 
         // Validasi jika gedung atau tanggal kosong
-        if (gedung === '' || tanggal === '') {
+        if (gedung == '' || tanggal == '') {
             alert('Harap isi Gedung dan Tanggal sebelum melanjutkan.');
-            return false; // Mencegah pengiriman formulir jika validasi tidak terpenuhi
+            return false;
         }
-        return true; // Melanjutkan pengiriman formulir jika validasi terpenuhi
+        return true;
     }
 
 

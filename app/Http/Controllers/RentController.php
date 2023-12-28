@@ -16,11 +16,13 @@ class RentController extends Controller
             'facility' => Facility::all(),
             'title' => 'Rentpage'
         ];
-
         return view('modules.rentpage.index', $data);
     }
+
 
     public function create()
     {
     }
+
+
 }
