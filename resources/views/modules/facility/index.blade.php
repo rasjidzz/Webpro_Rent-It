@@ -34,7 +34,7 @@
                             <div class="info">
                                 @auth
                                 <p>
-                                    Harga : {{ $facility->harga }}
+                                    Harga : {{ $facility->price }}
                                 </p>
                                 @endauth
                                 <p>

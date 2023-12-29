@@ -15,8 +15,7 @@ class Facility extends Model
         'description',
         'category_id',
         'image',
-        'harga'
-        // 'category'
+        'price'
     ];
 
     public function getByCategory($category)

@@ -23,7 +23,7 @@
                     <div class="carousel-inner">
                         @foreach (explode(', ', $facility->image) as $index => $imagePath)
                             <div class="carousel-item{{ $index == 0 ? ' active' : '' }}">
-                                <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100" alt="{{ $facility->slug }}-{{ $index + 1 }}" class="rounded" width="300" height="300">
+                                <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100 h-100" alt="{{ $facility->slug }}-{{ $index + 1 }}" class="rounded" width="300" height="300">
                             </div>
                         @endforeach
                         <button class="carousel-control-prev" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="prev"></button>
@@ -34,10 +34,10 @@
                 <div id="{{ $facility->slug }}" class="carousel slide my-3" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('storage/Fasilitas') }}/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
+                            <img src="{{ asset('storage/Fasilitas') }}/{{ $facility->slug }}-1.jpg" class="d-block w-100 h-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('storage/Fasilitas') }}/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
+                            <img src="{{ asset('storage/Fasilitas') }}/{{ $facility->slug }}-2.jpg" class="d-block w-100 h-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="prev"></button>
@@ -54,7 +54,7 @@
             <p class="lead">
                 Harga :
                 <strong>
-                    {{ $facility->harga }}
+                    {{ $facility->price }}
                 </strong>
             </p>
 
