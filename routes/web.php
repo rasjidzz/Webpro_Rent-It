@@ -6,6 +6,7 @@ use App\Http\Controllers\approvedController;
 use App\Http\Controllers\cancellationController;
 use App\Http\Controllers\declinedController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\historyController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingpageController;
@@ -15,11 +16,12 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\PembatalanController;
 use App\Http\Controllers\LaporankerusakanpageController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SubmissionController;
-
+use App\Models\Pemesanan;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,7 @@ Route::get('/facility', [FacilityController::class, 'index']);
 // Homepage
 Route::get('/homepage', [HomepageController::class, 'index'])->middleware('auth');
 Route::post('/updateKelas', [HomepageController::class, 'fetchKelasbyFacilityId']);
+Route::post('/checkAvailability', [HomepageController::class, 'checkAvailability']);
 
 //Pembatalanpage
 Route::get('/pembatalanpage', [PembatalanController::class, 'index'])->middleware('auth');
@@ -71,7 +74,8 @@ Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('a
 Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
 
 // Rent Page
-Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
+// Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
+Route::post('/rent', [RentController::class, 'store'])->middleware('auth');
 
 // ROUTES UNTUK ADMIN
 
