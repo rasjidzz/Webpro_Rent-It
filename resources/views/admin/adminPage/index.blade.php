@@ -7,7 +7,7 @@
             <div class="container text-center mt-3">
                 <div class="row">
                     <div class="col-lg-3" id="approved">
-                        <a href="/approved" class="text-decoration-none text-dark">
+                        <a href="/admin/approved" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3" id="submission">
-                        <a href="/reservasi" class="text-decoration-none text-dark">
+                        <a href="/admin/reservasi" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="col-lg-3" id="declined">
-                        <a href="/declined" class="text-decoration-none text-dark">
+                        <a href="/admin/declined" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
@@ -65,7 +65,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-                        <a href="/kerusakan" class="text-decoration-none text-dark">
+                        <a href="/admin/kerusakan" class="text-decoration-none text-dark">
                             <div class="card shadow-sm" id="report">
                                 <div class="card-body">
                                     <div class="icon-contain">
@@ -87,7 +87,7 @@
 
                 <div class="row mt-3">
                     <div class="col-lg-3" id="cancellation">
-                        <a href="/cancellation" class="text-decoration-none text-dark">
+                        <a href="/admin/cancellation" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
