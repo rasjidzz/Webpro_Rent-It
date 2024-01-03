@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('request_gedung_id');
-            $table->string('status');
+            $table->foreignId('user_id')->index();
+            $table->foreignId('facility_id')->index();
+            $table->date('tanggal_pemesanan');
+            $table->string('status')->default('Waiting');
+            $table->string('nama_file');
+            $table->string('file_path');
+            $table->string('nomor_tlp')->nullable();
+            $table->timestamps();
         });
     }
 

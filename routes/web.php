@@ -15,11 +15,12 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\PembatalanController;
 use App\Http\Controllers\LaporankerusakanpageController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SubmissionController;
-
+use App\Models\Pemesanan;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 //Status Pemesanan
 Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware('auth');
+// Route::get('/status_pemesanan', [SubmissionController::class, 'index'])->middleware('auth');
 
 // Pembayaran
 Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
@@ -72,8 +74,8 @@ Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('a
 Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
 
 // Rent Page
-Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
-
+// Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
+Route::post('/rent', [RentController::class, 'store'])->middleware('auth');
 
 // ROUTES UNTUK ADMIN
 

@@ -11,7 +11,7 @@ class Facility extends Model
     public $timestamp = true;
     protected $fillable = [
         'name',
-        's  lug',
+        'slug',
         'description',
         'category_id',
         'image',
@@ -19,7 +19,8 @@ class Facility extends Model
         // 'category'
     ];
 
-    public function getFacilityByID($facility_id){
+    public function getFacilityByID($facility_id)
+    {
         $facility = Facility::where('id', $facility_id)->first();
         return $facility;
     }
