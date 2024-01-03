@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends ('layouts.admin')
 
 @section('content')
     <style>
@@ -9,7 +9,12 @@
 
     <div class="container-lg justify-content-center">
         <h1 class="text-center mt-5 mb-5">Permintaan Reservasi</h1>
-
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="card card-body" style="background-color: #F4F5F6;">
             <table class="table table-responsive table-hover">
                 <thead style="background-color: #D32B31; color:azure">
@@ -24,58 +29,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung" width="90px" height="90px">
-                        </td>
-                        <td>
-                            <p>SURYA AULIA</p>
-                        </td>
-                        <td>
-                            <p>1302210084</p>
-                        </td>
-                        <td>
-                            081246296666
-                        </td>
-                        <td>
-                            <a href="Assets/PDF/PBO_MOD7_BELLA HUTAURUK_1301213327_SUI.pdf" download>docs1</a><br>
-                            <a href="Assets/PDF/TP_MOD7_1301210110_Maharani_Salsabila.pdf" download>docs2</a>
-                        </td>
-                        <td>
-                            Jumat, 12:30 - 15.30
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success btn-lg" style="width: 150px;">Accept</button><br><br>
-                            <button type="button" class="btn btn-danger btn-lg" style="width: 150px;">Deny</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung" width="90px" height="90px" id="gambar_gedung">
-                        </td>
-                        <td>
-                            <p>AULIA SURYA</p>
-                        </td>
-                        <td>
-                            <p>4800122031</p>
-                        </td>
-                        <td>
-                            081246296666
-                        </td>
-                        <td>
-                            <a href="Assets/PDF/PBO_MOD7_BELLA HUTAURUK_1301213327_SUI.pdf" download>docs1</a><br>
-                            <a href="Assets/PDF/TP_MOD7_1301210110_Maharani_Salsabila.pdf" download>docs2</a>
-                        </td>
-                        <td>
-                            Selasa, 12:30 - 15.30
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success btn-lg" style="width: 150px;">Accept</button><br><br>
-                            <button type="button" class="btn btn-danger btn-lg" style="width: 150px;">Deny</button>
-                        </td>
-                    </tr>
+                    @foreach ($pesananFasilitas as $info)
+                        <tr>
+                            <td>
+                                <img src="{{ asset($info->facility->photo) }}" alt="Gedung" width="90px" height="90px"
+                                    name="gambar_gedung">
+                            </td>
+                            <td>
+                                <p name="nama_user">{{ $info->user->name }}</p>
+                            </td>
+                            <td>
+                                <p name="nim_user">{{ $info->user->nim }}</p>
+                            </td>
+                            <td>
+                                <p name="tlp_user">{{ $info->nomor_tlp }}</p>
+                            </td>
+                            <td>
+                                <a href="Assets/PDF/{{ $info->file_path }}" download>{{ $info->nama_file }}</a>
+                            </td>
+                            <td>
+                                <p name="tgl_pinjam">{{ $info->tanggal_pemesanan }}</p>
+                            </td>
+                            <td>
+                                <form action="{{ route('submission.approve', ['id' => $info->id]) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success btn-lg"
+                                        style="width: 150px;">Accept</button>
+                                </form>
+                                <br>
+                                <form action="{{ route('submission.deny', ['id' => $info->id]) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-lg" style="width: 150px;">Deny</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {!! $pesananFasilitas->links() !!}
+            </div>
         </div>
     </div>
 @endsection

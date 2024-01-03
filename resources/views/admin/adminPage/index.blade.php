@@ -6,33 +6,14 @@
         <div class="d-flex flex-column w-100">
             <div class="container text-center mt-3">
                 <div class="row">
-                    <div class="col-lg-3" id="approved">
-                        <a href="/approved" class="text-decoration-none text-dark">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <div class="icon-contain">
-                                        <div class="row">
-                                            <div class="col-8 align-self-center text-start">
-                                                <h5>3</h5>
-                                                <p class="text-muted mb-0">Approved</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <i class="mdi mdi-account-check" style="font-size: 40px; color: green"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                     <div class="col-lg-3" id="submission">
-                        <a href="/reservasi" class="text-decoration-none text-dark">
+                        <a href="/admin/reservasi" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
                                         <div class="row">
                                             <div class="col-8 align-self-center text-start">
-                                                <h5>5</h5>
+                                                <h5>{{ $countSubmission }}</h5>
                                                 <p class="text-muted mb-0">Submission</p>
                                             </div>
                                             <div class="col-4">
@@ -44,19 +25,18 @@
                             </div>
                         </a>
                     </div>
-
-                    <div class="col-lg-3" id="declined">
-                        <a href="/declined" class="text-decoration-none text-dark">
+                    <div class="col-lg-3" id="history">
+                        <a href="/admin/history" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
                                         <div class="row">
                                             <div class="col-8 align-self-center text-start">
-                                                <h5>3</h5>
-                                                <p class="text-muted mb-0">Declined</p>
+                                                <h5>{{ $countHistory }}</h5>
+                                                <p class="text-muted mb-0">History</p>
                                             </div>
                                             <div class="col-4">
-                                                <i class="mdi mdi-account-remove" style="font-size: 40px; color: red"></i>
+                                                <i class="mdi mdi-account-check" style="font-size: 40px; color: green"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -65,13 +45,13 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-                        <a href="/kerusakan" class="text-decoration-none text-dark">
+                        <a href="/admin/kerusakan" class="text-decoration-none text-dark">
                             <div class="card shadow-sm" id="report">
                                 <div class="card-body">
                                     <div class="icon-contain">
                                         <div class="row">
                                             <div class="col-8 align-self-center text-start">
-                                                <h5>0</h5>
+                                                <h5>{{ $countDamage }}</h5>
                                                 <p class="text-muted mb-0">Damage report</p>
                                             </div>
                                             <div class="col-4">
@@ -83,17 +63,14 @@
                             </div>
                         </a>
                     </div>
-                </div>
-
-                <div class="row mt-3">
                     <div class="col-lg-3" id="cancellation">
-                        <a href="/cancellation" class="text-decoration-none text-dark">
+                        <a href="/admin/cancellation" class="text-decoration-none text-dark">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="icon-contain">
                                         <div class="row">
                                             <div class="col-8 align-self-center text-start">
-                                                <h5>2</h5>
+                                                <h5>{{ $countCancel }}</h5>
                                                 <p class="text-muted mb-0">Cancellation</p>
                                             </div>
                                             <div class="col-4">
@@ -107,7 +84,8 @@
                         </a>
                     </div>
                 </div>
-                <!-- <div class="text-white py-2 pl-2 sticky-top" style="background-color: #b6252a;"></div> -->
+            </div>
+            <!-- <div class="text-white py-2 pl-2 sticky-top" style="background-color: #b6252a;"></div> -->
 
 
     </body>

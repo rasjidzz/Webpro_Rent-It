@@ -49,17 +49,6 @@ class RentController extends Controller
         $noTel = $request->input('noTel');
         $file = $request->file("inputFile");
 
-        $data = [
-            'facility_id' => $facilityId,
-            'user_id' => $user_id,
-            'tanggalSewa' => $tanggalSewa,
-            'nama' => $nama,
-            'nim' => $nim,
-            'email' => $email,
-            'noTel' => $noTel,
-            'file' => $file,
-        ];
-
         // dd($data);
         $validatedData = $request->validate([
             "facility_id" => "required",
@@ -86,6 +75,7 @@ class RentController extends Controller
             $filepath = $filename;
         }
         // dd($validatedData, $filename);
+        $validatedData['nomor_tlp'] = $noTel;
         $validatedData['tanggal_pemesanan'] = $tanggalSewa;
         $validatedData['nama_file'] = $namafile;
         $validatedData['file_path'] = $filename;

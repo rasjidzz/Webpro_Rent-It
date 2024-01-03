@@ -27,4 +27,20 @@ class Pemesanan extends Model
     {
         return $this->belongsTo(Facility::class);
     }
+
+    public function getApprovedAndRejectedPemesanan()
+    {
+        return $this->whereIn('status', ['approved', 'rejected'])->get();
+    }
+    public function countTotal($type)
+    {
+        if ($type === 'submission') {
+            return $this->where('status', 'Waiting')->count();
+        } elseif ($type === 'history') {
+            return $this->whereIn('status', ['approved', 'rejected'])->count();
+        } else {
+            // Handle other types if needed
+            return 0;
+        }
+    }
 }
