@@ -32,8 +32,7 @@
                     @foreach ($pesananFasilitas as $info)
                         <tr>
                             <td>
-                                <img src="{{ asset($info->facility->photo) }}" alt="Gedung" width="90px" height="90px"
-                                    name="gambar_gedung">
+                                <img src="{{ asset($info->facility->image) }}" alt="{{ $info->facility->slug }}" width="90px" height="90px" name="{{ $info->facility->slug }}">
                             </td>
                             <td>
                                 <p name="nama_user">{{ $info->user->name }}</p>

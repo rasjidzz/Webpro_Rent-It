@@ -41,10 +41,10 @@
                 <li><a class="dropdown-item" href="/admin/dashboard">Dashboard Admin</a></li>
                 @else
                 <li><a class="dropdown-item" href="/status_pemesanan">Status Pemesanan</a></li>
-                <li role="separator" class="dropdown-divider"></li> 
+                <li role="separator" class="dropdown-divider"></li>
                 <li><span class="dropdown-item-text" >Saldo : </span></li>
-                <li><span class="dropdown-item-text" id="saldo"></span></li> 
-                <li role="separator" class="dropdown-divider"></li> 
+                <li><span class="dropdown-item-text" id="saldo"></span></li>
+                <li role="separator" class="dropdown-divider"></li>
                 @endif
 
                 <li>
@@ -54,12 +54,12 @@
                     </form>
                 </li>
             </ul>
-        </div>        
+        </div>
         {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form> --}}
         @else
-       
+
         @endauth
     </div>
 </nav>
