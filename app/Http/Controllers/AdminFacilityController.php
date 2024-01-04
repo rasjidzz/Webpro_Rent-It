@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 
 class AdminFacilityController extends Controller
 {
+    protected $facilityModel;
+    protected $categoryModel;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->facilityModel = new Facility();
+        $this->categoryModel = new Category();
+    }
     public function index()
     {
         $data = [
@@ -20,7 +27,7 @@ class AdminFacilityController extends Controller
             'facilities' => Facility::all()
         ];
         // var_dump($data);
-        return view('admin.addFacilityPage.index', $data);
+        return view('admin.Facilities.index', $data);
     }
 
     /**
@@ -34,7 +41,7 @@ class AdminFacilityController extends Controller
             'title' => 'Add Facility',
             'categories' => Category::all()
         ];
-        return view('admin.addFacilityPage.addfacility', $data);
+        return view('admin.Facilities.addfacility', $data);
     }
 
     /**
@@ -45,28 +52,13 @@ class AdminFacilityController extends Controller
      */
     public function store(Request $request)
     {
-        // // Without Foto
-        // $validatedData = $request->validate([
-        //     'name' => 'required|max:255',
-        //     'slug' => 'required|unique:facilities',
-        //     'category_id' => 'required',
-        //     'harga' => 'required',
-        //     'description' => 'required'
-        // ]);
-
-        // // print_r($validatedData);
-        // Facility::create($validatedData);
-        // return redirect('/admin/facility')->with('success', 'New Post has been added !');
-
-        // With Foto
-        // ddd($request);
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|unique:facilities',
             'category_id' => 'required',
             'harga' => 'required',
             'description' => 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Aturan validasi untuk file gambar
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $imagePaths = [];
@@ -88,7 +80,7 @@ class AdminFacilityController extends Controller
         $validatedData['image'] = implode(', ', $imagePaths);
 
         Facility::create($validatedData);
-        return redirect('/admin/facility')->with('success', 'New Post has been added!');
+        return redirect('/admin/facilities')->with('success', 'New Facility has been added!');
     }
 
     /**
@@ -99,8 +91,14 @@ class AdminFacilityController extends Controller
      */
     public function show(Facility $facility)
     {
-        //
+        $data = [
+            'facility' => $facility,
+            'title' => 'View Facility'
+        ];
+        return view("admin.Facilities.viewFacility", $data);
+        // return $facility;
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -110,7 +108,12 @@ class AdminFacilityController extends Controller
      */
     public function edit(Facility $facility)
     {
-        //
+        $data = [
+            'title' => 'Edit Facility',
+            'categories' => Category::all(),
+            'facility' => $facility
+        ];
+        return view('admin.Facilities.editfacility', $data);
     }
 
     /**
@@ -120,9 +123,24 @@ class AdminFacilityController extends Controller
      * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
+    // sebelum
     public function update(Request $request, Facility $facility)
     {
-        //
+        // ddd($request);
+        $rules = [
+            'category_id' => 'required',
+            'harga' => 'required',
+            'description' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahan
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        // // print_r($validatedData);
+        Facility::where('id', $facility->id)
+            ->update($validatedData);
+
+        return redirect('/admin/facilities')->with('success', 'Facility has been updated!');
     }
 
     /**
@@ -133,6 +151,17 @@ class AdminFacilityController extends Controller
      */
     public function destroy(Facility $facility)
     {
-        //
+        Facility::destroy($facility->id);
+        return redirect('/admin/facilities')->with('delete', 'Facility has been deleted!');
+    }
+    public function openEdit($facility_id)
+    {
+        $facility = $this->facilityModel->getByID($facility_id);
+        $data = [
+            'title' => 'Edit Facility',
+            'facility' => $facility,
+            'categories' => $this->categoryModel::all()
+        ];
+        return view('admin.Facilities.editFacility', $data);
     }
 }

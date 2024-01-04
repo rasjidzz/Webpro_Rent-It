@@ -18,22 +18,14 @@
                         <div id="{{ $facility->slug }}" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    {{-- <img src="Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300"> --}}
                                     <img src="Storage/fasilitas/{{ $facility->slug }}-2.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                                 </div>
                                 <div class="carousel-item">
-                                    {{-- <img src="Assets/Fasilitas/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-1" class="rounded" width="300" height="300"> --}}
                                     <img src="Storage/fasilitas/{{ $facility->slug }}-1.jpg" class="d-block w-100" alt="{{ $facility->slug }}-2" class="rounded" width="300" height="300">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="prev">
-                                {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span> --}}
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="next">
-                                {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span> --}}
-                            </button>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="prev"></button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#{{ $facility->slug }}" data-bs-slide="next"></button>
                         </div>
                     </div>
                     <div class="col">
@@ -42,7 +34,7 @@
                             <div class="info">
                                 @auth
                                 <p>
-                                    Harga : {{ $facility->harga }}
+                                    Harga : {{ $facility->price }}
                                 </p>
                                 @endauth
                                 <p>

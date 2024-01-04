@@ -108,4 +108,4 @@ Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware([
 
 // Add Fasilitas - Admin
 // Route::get('/admin/addfacility', [FacilityController::class, 'addFacility'])->middleware(['auth', 'admin']);
-Route::resource('/admin/facility', AdminFacilityController::class)->middleware(['auth', 'admin']);
+Route::resource('/admin/facilities', AdminFacilityController::class)->middleware(['auth', 'admin']);

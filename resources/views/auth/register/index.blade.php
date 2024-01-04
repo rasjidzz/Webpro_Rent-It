@@ -43,8 +43,14 @@
                     </div>
                     @enderror
                   </div>
+                  {{-- TAMBAHAN --}}
+                  <div class="form-group mt-3 form-check form-switch">
+                    <label class="form-check-label text-white" for="isAdmin">Is Admin</label>
+                    <input class="form-check-input" type="checkbox" id="isAdmin" name="isAdmin" {{ old('isAdmin') ? 'checked' : '' }}>
+                  </div>                
+                  {{-- TAMBAHAN --}}
                   <div class="form-group mt-3">
-                    <label class="label-access text-white mb-2">NIM</label>
+                    <label class="label-access text-white mb-2">NIM / NIP</label>
                     <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" placeholder="NIM" name="nim" required value="{{ old('nim') }}" maxlength="10">
                     @error('nim')
                     <div class="invalid-feedback">
