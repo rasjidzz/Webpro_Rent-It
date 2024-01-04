@@ -86,7 +86,7 @@
                         <div class="card-body">
                             <h5 class="card-title fs-2 font-family-Open Sans" name="nama_bayar">
                                 {{ $pesanan->facility->name }}</h5>
-                            <p class="card-text text-danger font-family-Open Sans" name="harga_bayar">Rp 500.000</p>
+                            <p class="card-text text-danger font-family-Open Sans" name="harga_bayar">Rp {{ $pesanan->facility->price }}</p>
                             <p class="card-text"><small class="text-muted font-family-Open Sans"
                                     name="tanggal_bayar">{{ $pesanan->tanggal_pemesanan }}</small></p>
                         </div>

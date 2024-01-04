@@ -36,7 +36,7 @@ class HomepageController extends Controller
     public function checkAvailability(Request $request){
         $facilityId = $request->input('facility_id');
         $tanggalSewa = $request->input('tanggalSewa');
-        
+
         // dd($facilityId, $tanggalSewa)
         $data = [
             'facility' => $this->facilityModel->getFacilityByID($facilityId),
