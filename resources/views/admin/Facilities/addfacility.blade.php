@@ -42,9 +42,9 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="harga" class="form-label">Harga Fasilitas</label>
-                <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" inputmode="numeric" pattern="[0-9]*" value="{{ old('harga') }}">
-                  @error('harga')
+                <label for="price" class="form-label">Harga Fasilitas</label>
+                <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" inputmode="numeric" pattern="[0-9]*" value="{{ old('price') }}">
+                  @error('price')
                       <div class="invalid-feedback">
                           {{ $message }}
                       </div>

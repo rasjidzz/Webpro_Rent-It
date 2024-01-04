@@ -56,7 +56,7 @@ class AdminFacilityController extends Controller
             'name' => 'required|max:255',
             'slug' => 'required|unique:facilities',
             'category_id' => 'required',
-            'harga' => 'required',
+            'price' => 'required',
             'description' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

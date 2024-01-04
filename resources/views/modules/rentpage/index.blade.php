@@ -98,7 +98,7 @@
                     <input hidden type="number" class="form-control" id="user_id" name="user_id"
                         value="{{ auth()->user()->id }}">
                     <input hidden type="number" class="form-control" id="facility_id" name="facility_id"
-                        value={{ $facility->id }}>
+                        value= "{{ $facility->id }}>"
                 </div>
             </section>
 
