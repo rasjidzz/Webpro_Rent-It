@@ -18,6 +18,11 @@ class Facility extends Model
         'price'
     ];
 
+    public function getFacilityByID($facility_id)
+    {
+        $facility = Facility::where('id', $facility_id)->first();
+        return $facility;
+    }
     public function getByCategory($category)
     {
         $facilities = Facility::where('category_id', $category)->get();

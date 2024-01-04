@@ -53,7 +53,7 @@ Route::get('/pembatalanpage2', [PembatalanController::class, 'index2'])->middlew
 Route::get('/laporankerusakanpage', [LaporankerusakanpageController::class, 'index'])->middleware('auth');
 Route::get('/laporankerusakanpage2', [LaporankerusakanpageController::class, 'index2'])->middleware('auth');
 
-// Login 
+// Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
@@ -66,8 +66,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 //Status Pemesanan
 Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware('auth');
+// Route::get('/status_pemesanan', [SubmissionController::class, 'index'])->middleware('auth');
 
-// Pembayaran 
+// Pembayaran
 Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
 
 // Top Up
@@ -83,9 +84,9 @@ Route::post('/rent', [RentController::class, 'store'])->middleware('auth');
 // Route::get('/admin/dashboard', [adminPageController::class, 'index'])->middleware('auth');
 Route::get('/admin/dashboard', [adminPageController::class, 'index'])->middleware(['auth', 'admin']);
 
-// // Approved - Admin
+// // History - Admin
 // Route::get('/admin/approved', [approvedController::class, 'index'])->middleware('auth');
-Route::get('/admin/approved', [approvedController::class, 'index'])->middleware(['auth', 'admin']);
+Route::get('/admin/history', [historyController::class, 'index'])->middleware(['auth', 'admin']);
 
 // // Cancellation - Admin
 // Route::get('/admin/cancellation', [cancellationController::class, 'index'])->middleware('auth');
@@ -93,11 +94,13 @@ Route::get('/admin/cancellation', [cancellationController::class, 'index'])->mid
 
 // // Declined - Admin
 // Route::get('/admin/declined', [declinedController::class, 'index'])->middleware('auth');
-Route::get('/admin/declined', [declinedController::class, 'index'])->middleware(['auth', 'admin']);
+// Route::get('/admin/declined', [declinedController::class, 'index'])->middleware(['auth', 'admin']);
 
-// // Permintaan Reservasi - Admin
-// Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middleware('auth');
-Route::get('/admin/reservasi', [SubmissionController::class, 'index'])->middleware(['auth', 'admin']);
+//Admin Permintaan Reservasi
+Route::get('/admin/reservasi', [SubmissionController::class, 'index']);
+Route::post('/admin/submission/{id}/deny', [SubmissionController::class, 'deny'])->name('submission.deny');
+Route::post('/admin/submission/{id}/approve', [SubmissionController::class, 'approve'])->name('submission.approve');
+
 
 // // Lapor Kerusakan - Admin
 // Route::get('/admin/kerusakan', [ReportController::class, 'index'])->middleware('auth');

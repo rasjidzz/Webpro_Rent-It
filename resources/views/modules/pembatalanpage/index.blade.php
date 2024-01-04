@@ -15,7 +15,10 @@
             <option value="2">Telkom University Landmark Tower</option>
             <option value="3">Auditorium</option>
         </select>
+        <br>
+        <button type="button" class="btn btn-danger">Cari Fasilitas</button>
     </div>
+
 
     <div class="container">
         <div class="row">
