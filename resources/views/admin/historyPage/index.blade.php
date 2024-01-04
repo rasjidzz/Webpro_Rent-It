@@ -14,22 +14,28 @@
             <table class="table table-responsive table-hover">
                 <thead style="background-color: #D32B31; color:azure">
                     <tr>
-                        <th scope="col" style="width: 200px;">Gedung</th>
-                        <th scope="col" style="width: 300px;">Peminjam</th>
+                        <th scope="col" style="width: 200px;">Photo</th>
+                        <th scope="col" style="width: 200px;">Nama Gedung</th>
+                        <th scope="col" style="width: 250px;">Peminjam</th>
                         <th scope="col" style="width: 150px;">NIM</th>
                         <th scope="col" style="width: 150px;">No Telepon</th>
                         <th scope="col" style="width: 150px;">Dokumen</th>
                         <th scope="col" style="width: 150px;">Tanggal Pinjam</th>
                         <th scope="col" style="width: 150px;">Status</th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($history as $pemesanan)
                         <tr>
                             <td>
-                                <img src="{{ asset($pemesanan->facility->photo) }}" alt="Gedung" width="90px"
-                                    height="90px" name="gambar_gedung">
+                                {{-- <img src="{{ asset($pemesanan->facility->image) }}" alt="{{ $pemesanan->facility->slug }}" width="90px" height="90px" name="{{ $pemesanan->facility->slug }}"> --}}
+                                @foreach (explode(', ', $pemesanan->facility->image) as $index => $imagePath)
+                                    <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100 h-100" alt="{{ $pemesanan->facility->slug }}-{{ $index + 1 }}" class="rounded" width="300" height="300">
+                                    @break
+                                @endforeach
+                            </td>
+                            <td>
+                                <p name="nama_gedung">{{ $pemesanan->facility->name }}</p>
                             </td>
                             <td>
                                 <p name="nama_user">{{ $pemesanan->user->name }}</p>

@@ -19,12 +19,13 @@
             <table class="table table-responsive table-hover">
                 <thead style="background-color: #D32B31; color:azure">
                     <tr>
+                        <th scope="col" style="width: 250px;">Photo</th>
                         <th scope="col" style="width: 200px;">Gedung</th>
                         <th scope="col" style="width: 300px;">Peminjam</th>
                         <th scope="col" style="width: 150px;">NIM</th>
                         <th scope="col" style="width: 150px;">No Telepon</th>
                         <th scope="col" style="width: 150px;">Dokumen</th>
-                        <th scope="col" style="width: 150px;">Tanggal Pinjam</th>
+                        <th scope="col" style="width: 200px;">Tanggal Pinjam</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -32,7 +33,14 @@
                     @foreach ($pesananFasilitas as $info)
                         <tr>
                             <td>
-                                <img src="{{ asset($info->facility->image) }}" alt="{{ $info->facility->slug }}" width="90px" height="90px" name="{{ $info->facility->slug }}">
+                                {{-- <img src="{{ asset($info->facility->image) }}" alt="{{ $info->facility->slug }}" width="90px" height="90px" name="{{ $info->facility->slug }}"> --}}
+                                @foreach (explode(', ', $info->facility->image) as $index => $imagePath)
+                                    <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100 h-100" alt="{{ $info->facility->slug }}-{{ $index + 1 }}" class="rounded" width="300" height="300">
+                                    @break
+                                @endforeach
+                            </td>
+                            <td>
+                                <p>{{ $info->facility->name }}</p>
                             </td>
                             <td>
                                 <p name="nama_user">{{ $info->user->name }}</p>

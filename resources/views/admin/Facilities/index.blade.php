@@ -15,7 +15,7 @@
     </div>
     @endif
     <div class="table-responsive">
-      <a class="btn btn-danger" href="/admin/facilities/create">Add Facility</a>
+      <a class="btn btn-danger my-3" href="/admin/facilities/create">Add Facility</a>
       <table class="table text-center">
           <thead>
             <tr>
@@ -43,7 +43,7 @@
                       <button class="btn btn-danger delete-btn" data-facility-id="{{ $facility->slug }}">
                         Delete
                       </button>
-                   </form>                 
+                   </form>
                 </td>
               </tr>
               @endforeach

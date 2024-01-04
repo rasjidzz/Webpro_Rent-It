@@ -26,7 +26,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung" width="90px" height="90px">
+                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung-GKU" width="90px" height="90px">
                         </td>
                         <td>
                             <p>SURYA AULIA</p>
@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung" width="90px" height="90px" id="gambar_gedung">
+                            <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="Gedung-GKU" width="90px" height="90px" id="gambar_gedung">
                         </td>
                         <td>
                             <p>AULIA SURYA</p>
