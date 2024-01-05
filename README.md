@@ -4,9 +4,10 @@ Merged branch :
 - Ashar
 - Stevent (progress)
 - Surya
+- Zhafran (Progress, pembayaran)
 
 To do :
-- JUliandri
+- Juliandri
 - Zhafran
 
 
