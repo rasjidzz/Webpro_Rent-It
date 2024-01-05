@@ -76,11 +76,16 @@
             </div>
         </div>
         @foreach ($daftarPemesanan as $pesanan)
-            <div class="card mb-3 mt-5" id="card_list">
+            <div class="card mb-3 my-5" id="card_list">
                 <div class="row g-0">
                     <div class="col-6 col-md-2">
-                        <img src="{{ $pesanan->facility->photo }}" class="card-img" name="gedung_bayar"
-                            style="height: 160px; object-fit: cover;" alt="gedung">
+                        <td>
+                            {{-- <img src="{{ asset($pesanan->facility->image) }}" alt="{{ $pesanan->facility->slug }}" width="90px" height="90px" name="{{ $pesanan->facility->slug }}"> --}}
+                            @foreach (explode(', ', $pesanan->facility->image) as $index => $imagePath)
+                                <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100 h-100" alt="{{ $pesanan->facility->slug }}-{{ $index + 1 }}" class="rounded" width="300" height="300">
+                                @break
+                            @endforeach
+                        </td>
                     </div>
                     <div class="col-6 col-md-10">
                         <div class="card-body">
