@@ -44,6 +44,7 @@
                 <li role="separator" class="dropdown-divider"></li>
                 <li><span class="dropdown-item-text" >Saldo : </span></li>
                 <li><span class="dropdown-item-text" id="saldo"></span></li>
+                <li><a class="dropdown-item" href="/topup">Top Up</a></li>
                 <li role="separator" class="dropdown-divider"></li>
                 @endif
 

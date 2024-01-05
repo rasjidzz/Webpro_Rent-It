@@ -74,7 +74,8 @@ Route::post('/bayar', [PembayaranController::class, 'bayar']);
 Route::post('/complete', [PembayaranController::class, 'completeRent']);
 
 // Top Up
-Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');
+Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth')->name('topup.index');
+Route::post('/topup', [TopUpController::class, 'store'])->middleware('auth')->name('topup.store');
 
 // Rent Page
 // Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
