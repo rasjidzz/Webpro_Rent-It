@@ -25,7 +25,9 @@ class StatusController extends Controller
             'warna' => $colors,
             'waiting' => $daftarPemesanan->where('status', 'Waiting')->count(),
             'approved' => $daftarPemesanan->where('status', 'Approved')->count(),
-            'denied' => $daftarPemesanan->where('status', 'Rejected')->count()
+            'denied' => $daftarPemesanan->where('status', 'Rejected')->count(),
+            'active' => $daftarPemesanan->where('status', 'Active')->count(),
+            'completed' => $daftarPemesanan->where('status', 'Completed')->count(),
         ];
 
         return view('modules.orderStatusPage.index', $data);
@@ -40,6 +42,10 @@ class StatusController extends Controller
             $color = 'ffa500';
         } elseif ($daftarPemesanan->status === "Rejected") {
             $color = 'ff0000';
+        }elseif($daftarPemesanan->status === "Active"){
+            $color = '006400';
+        }elseif($daftarPemesanan->status === "Completed"){
+            $color = '000080';
         }
         return $color;
     }

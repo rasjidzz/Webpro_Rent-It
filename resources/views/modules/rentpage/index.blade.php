@@ -53,7 +53,7 @@
     </style>
 
 <div class="container my-5">
-    <form action="/rent" method="POST" enctype="multipart/form-data">>
+    <form action="/rent" method="POST" enctype="multipart/form-data">
         @csrf
         <section class="row gap-4 justify-content-center">
             <div id="box1" class="col-sm-4 w-30 rounded-3 border border-1 border-secondary px-0">
@@ -61,6 +61,11 @@
                 <img src="/Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="card-img-top">
                 <div class="card-body">
                     <h4 class="card-title text-center">{{ $facility->name }}</h4>
+                    <p>
+                        <span class="formatted-price" data-raw-price="{{ $facility->price }}">
+                            Rp {{ $facility->price }}
+                        </span>
+                    </p>
                     <p class="card-text">{{ $facility->description }}</p>
                 </div>
             </div>
@@ -234,5 +239,18 @@
                 e.preventDefault();
             }
         });
+        document.querySelectorAll('.formatted-price').forEach(function (element) {
+        // Mengambil nilai harga dari data-raw-price
+        var rawPrice = element.getAttribute('data-raw-price');
+
+        // Memformat harga dengan fungsi formatCurrency
+        var formattedPrice = formatCurrency(rawPrice);
+
+        // Mengganti teks pada elemen dengan harga yang diformat
+        element.innerText = formattedPrice;
+    });
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount);
+    }
     </script>
 @endsection

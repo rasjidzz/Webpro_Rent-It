@@ -53,8 +53,10 @@
                                 <p name="tgl_pinjam">{{ $pemesanan->tanggal_pemesanan }}</p>
                             </td>
                             <td>
-                                @if ($pemesanan->status == 'Approved')
+                                @if ($pemesanan->status == 'Approved' || $pemesanan->status == 'Active')
                                     <p name="statusPemesanan" class="text-success fw-bold">{{ $pemesanan->status }}</p>
+                                @elseif ($pemesanan->status == 'Completed')
+                                    <p name="statusPemesanan" class="text-primary fw-bold">{{ $pemesanan->status }}</p>
                                 @else
                                     <p name="statusPemesanan" class="text-danger fw-bold">{{ $pemesanan->status }}</p>
                                 @endif

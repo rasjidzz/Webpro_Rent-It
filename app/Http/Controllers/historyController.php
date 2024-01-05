@@ -17,7 +17,7 @@ class historyController extends Controller
     {
         $data = [
             'title' => 'HistoryPage',
-            'history' => $this->pemesananModel->getApprovedAndRejectedPemesanan()
+            'history' => $this->pemesananModel->getApprovedRejectedCompletedActive()
         ];
 
         return view('admin.historyPage.index', $data);

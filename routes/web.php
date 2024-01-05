@@ -70,6 +70,8 @@ Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware(
 
 // Pembayaran
 Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
+Route::post('/bayar', [PembayaranController::class, 'bayar']);
+Route::post('/complete', [PembayaranController::class, 'completeRent']);
 
 // Top Up
 Route::get('/topup', [TopUpController::class, 'index'])->middleware('auth');

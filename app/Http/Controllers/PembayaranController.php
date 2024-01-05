@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use App\Models\RequestGedung;
 
@@ -35,37 +36,35 @@ class PembayaranController extends Controller
         return view('modules.konfirmasi.index', $data);
     }
 
-    // public function book(Request $request)
-    // {
-    //     // Retrieve file information from the session
-    //     $fileInfo = $request->session()->get('file');
+    public function bayar(Request $request) {
+        $hargasewa = $request->input('hargasewa');
+        $pesananID = $request->input('pesanan_ID');
 
-    //     $facilityId = $request->input('facility_id');
-    //     $user_id = $request->input('user_id');
-    //     $tanggalSewa = $request->input('tanggalSewa');
-    //     $nama = $request->input('nama');
-    //     $nim = $request->input('nim');
-    //     $email = $request->input('email');
-    //     $noTel = $request->input('noTel');
-    //     $file = $fileInfo['file'];
+        $user = auth()->user();
+        $wallet = $user->wallet;
+        $pemesanan = Pemesanan::find($pesananID);
+        // return response()->json(['status' => 'error', 'wallet' => $wallet, 'pemesanan' => $pesanan->status]);
 
+        // Check if the user has enough balance
+        if ($wallet->balance >= $hargasewa) {
+            // Deduct the payment amount from the user's wallet balance
+            $wallet->decrement('balance', $hargasewa);
 
-    //     $destinationPath = $fileInfo['destinationPath'];
-    //     $originalName = $fileInfo['originalName'];
-    //     $file->move($destinationPath, $originalName);
+            // Process the payment or update the database as needed
 
-    //     $requestGedung = RequestGedung::create([
-    //         'facility_id' => $facilityId,
-    //         'user_id' => $user_id,
-    //         'tanggal' => $tanggalSewa,
-    //         'nama_file' => $originalName,
-    //         'file_path' => $destinationPath,
-    //         'nomor_tlp' => $noTel,
-    //     ]);
+            $pemesanan->update(['status' => 'Active']);
 
-    //     // Remove the file information from the session
-    //     $request->session()->forget('file');
+            return response()->json(['status' => 'success', 'hargasewa' => $hargasewa, 'pesananID' => $pesananID]);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Insufficient balance.']);
+        }
+    }
+    public function completeRent(Request $request){
+        $pesananID = $request->input('pesanan_ID');
 
-    //     return redirect('/homepage');
-    // }
+        $pemesanan = Pemesanan::find($pesananID);
+        $pemesanan->update(['status' => 'Completed']);
+
+        return response()->json(['status' => 'Success', 'message' => 'Pesanan berhasil di complete']);
+    }
 }

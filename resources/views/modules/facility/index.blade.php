@@ -33,8 +33,11 @@
                             <h4>{{ $facility->name }}</h4>
                             <div class="info">
                                 @auth
-                                <p>
+                                {{-- <p>
                                     Harga : {{ $facility->price }}
+                                </p> --}}
+                                <p>
+                                    Harga : <span class="formatted-price" data-raw-price="{{ $facility->price }}">{{ $facility->price }}</span>
                                 </p>
                                 @endauth
                                 <p>
@@ -54,4 +57,20 @@
         </div>
     </div>
 </section>
+<script>
+    // Loop melalui setiap elemen dengan class "formatted-price"
+    document.querySelectorAll('.formatted-price').forEach(function (element) {
+        // Mengambil nilai harga dari data-raw-price
+        var rawPrice = element.getAttribute('data-raw-price');
+
+        // Memformat harga dengan fungsi formatCurrency
+        var formattedPrice = formatCurrency(rawPrice);
+
+        // Mengganti teks pada elemen dengan harga yang diformat
+        element.innerText = formattedPrice;
+    });
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount);
+    }
+</script>
 @endsection
