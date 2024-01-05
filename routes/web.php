@@ -69,7 +69,7 @@ Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware(
 // Route::get('/status_pemesanan', [SubmissionController::class, 'index'])->middleware('auth');
 
 // Pembayaran
-Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
+// Route::get('/konfirmasi', [PembayaranController::class, 'index'])->middleware('auth');
 Route::post('/bayar', [PembayaranController::class, 'bayar']);
 Route::post('/complete', [PembayaranController::class, 'completeRent']);
 
