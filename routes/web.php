@@ -52,6 +52,7 @@ Route::get('/pembatalanpage2', [PembatalanController::class, 'index2'])->middlew
 //Laporankerusakanpage
 Route::get('/laporankerusakanpage', [LaporankerusakanpageController::class, 'index'])->middleware('auth');
 Route::get('/laporankerusakanpage2', [LaporankerusakanpageController::class, 'index2'])->middleware('auth');
+Route::post('/getfacilityinfo', [LaporankerusakanpageController::class, 'getFacilityInfo'])->middleware('auth');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');

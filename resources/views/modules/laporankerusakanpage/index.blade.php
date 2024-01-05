@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('container')
 <section>
+    <div class="container">
     <div id="PilihFasilitas" style="border: 2px white; padding: 20px; background-color: white; border-radius: 10px; margin-bottom: 50px;">
         <div class="" style="text-align: center; color: white;">
             <h1 style="font-weight: bold; color: black;">LAPORAN KERUSAKAN</h1>
@@ -9,29 +10,28 @@
             </div>
         </div>
 
-        <select class="form-select margin-bottom: 50px" aria-label="Default select example">
-            <option selected>Pilih Fasilitas</option>
-            <option value="1">Gedung Kuliah Umum</option>
-            <option value="2">Telkom University Landmark Tower</option>
-            <option value="3">Auditorium</option>
+        <select class="form-select margin-bottom: 50px" onchange="fetchData()" id="selectFasilitas">
+            <option>Pilih Fasilitas</option>
+            @foreach ($pemesanans as $pemesanan)
+                <option value="{{ $pemesanan->facility->id }}">{{ $pemesanan->facility->name }}</option>
+            @endforeach
         </select>
     </div>
 
-    <div class="container">
         <div class="row">
             <div class="col">
                 <div class="auto" style="margin-bottom: 10%;">
                     <div class="d-flex" style="background-color: #ECE8E8;">
-                        <img src="Assets/GKU.jpg" heigth="" width="200px" class="w-20" alt="GKU" />
+                        <img src="Assets/GKU.jpg" heigth="" width="200px" class="w-20" alt="GKU" id="foto_fasilitas" />
                         <div class="my-auto ms-2">
-                            <h2 class="fs-2 fw-3" style="margin-bottom: 5%;">Gedung kuliah umum</h2>
-                            <h3 style="color: #9F1521; font-weight: 400; font-size: 25px;">Rp 500.000.00</h3>
+                            <h2 class="fs-2 fw-3" style="margin-bottom: 5%;" id="nama_fasilitas">Nama Fasilitas</h2>
+                            <h3 style="color: #9F1521; font-weight: 400; font-size: 25px;" id="harga_fasilitas">Harga Fasilitas</h3>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div>
+    </div>
 </section>
 
 <section>
@@ -46,7 +46,7 @@
         </div>
         <p id="acc" style="font-size: 12px; color:darkgrey;">Accepted File: .pdf .docx</p>
         <form action="" id="tombol">
-            <a class="btn btn-danger mt-3" type="submit" href="/laporankerusakanpage2" >Ajukan Laporan</a>
+            <a class="btn btn-danger mt-3" type="submit" href="/pembatalanpage2" >Ajukan Laporan</a>
         </form>
     </div>
 </section>
@@ -54,6 +54,33 @@
 </div>
 
 <script>
+    function fetchData() {
+        console.log("masuk");
+        // Mendapatkan elemen dropdown
+        var dropdown = document.getElementById("selectFasilitas");
+
+        // Mendapatkan nilai terpilih dari dropdown
+        var selectedFacilityId = dropdown.value;
+
+        $.ajax({
+            url: '/getfacilityinfo',
+            type: 'POST',
+            data: {
+                facility_id: selectedFacilityId
+            },
+            success: function (response) {
+                console.log(response);
+                document.getElementById("foto_fasilitas").src = response.image;
+                document.getElementById("nama_fasilitas").innerText = response.name;
+                document.getElementById("harga_fasilitas").innerText = response.price;
+            },
+            error: function (error) {
+                console.error('Complete error:', error);
+            }
+        });
+    }
+
+
     const dropArea = document.querySelector(".dropArea");
     const inputFile = document.querySelector("#fileInput");
     const inputFileLabel = document.querySelector("label[for='fileInput']");

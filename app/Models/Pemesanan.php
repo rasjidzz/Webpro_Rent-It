@@ -27,7 +27,6 @@ class Pemesanan extends Model
     {
         return $this->belongsTo(Facility::class);
     }
-
     public function getApprovedRejectedCompletedActive()
     {
         return $this->whereIn('status', ['approved', 'rejected', 'completed', 'active'])->get();
