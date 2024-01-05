@@ -142,7 +142,7 @@
                             </p>
                         </div>
                         @if($pesanan->status === "Approved")
-                            <a class="btn btn-primary mx-3 my-3" onclick="openModalPembayaran({{ $pesanan->facility->price }}, {{ $pesanan->id }})">
+                            <a class="btn btn-success mx-3 my-3" onclick="openModalPembayaran({{ $pesanan->facility->price }}, {{ $pesanan->id }})">
                                 Bayar
                             </a>
                         @endif
