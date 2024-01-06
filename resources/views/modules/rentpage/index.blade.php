@@ -57,8 +57,8 @@
         @csrf
         <section class="row gap-4 justify-content-center">
             <div id="box1" class="col-sm-4 w-30 rounded-3 border border-1 border-secondary px-0">
-                <!-- $s->gambar -->
-                <img src="/Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="card-img-top">
+                {{-- <img src="/Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="card-img-top"> --}}
+
                 <div class="card-body">
                     <h4 class="card-title text-center">{{ $facility->name }}</h4>
                     <p>

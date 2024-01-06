@@ -13,7 +13,7 @@ class LaporankerusakanpageController extends Controller
     {
         $data = [
             'title' => 'Laporankerusakanpage',
-            'pemesanans' => Pemesanan::where('status', 'Completed')->get()
+            'pemesanans' => Pemesanan::where('status', 'Completed')->where('user_id', auth()->user()->id)->get(),
         ];
         // dd($data);
         return view('modules.laporankerusakanpage.index', $data);
