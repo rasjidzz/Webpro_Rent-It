@@ -64,9 +64,10 @@ class RentController extends Controller
         if ($request->hasFile('inputFile')) {
             $name = $validatedData['nama'];
             $nim = $validatedData['nim'];
+            $facilityID = $validatedData['facility_id'];
             $extension = $file->getClientOriginalExtension();
-            $namafile = $name . '-' . $nim;
-            $filename = $name . '-' . $nim . '.' . $extension;
+            $namafile = $name . '-' . $facilityID . $nim;
+            $filename = $name . '-' . $nim . '-' . $facilityID . '-' . '.' . $extension;
 
             // Here you can use $filename as the complete filename with extension
             // For example, you can save it to storage or move it to a specific directory

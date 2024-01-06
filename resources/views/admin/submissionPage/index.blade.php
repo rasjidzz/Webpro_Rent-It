@@ -59,7 +59,7 @@
                             <p name="tlp_user">{{ $info->nomor_tlp }}</p>
                         </td>
                         <td>
-                            <a href="Assets/PDF/{{ $info->file_path }}" download>{{ $info->nama_file }}</a>
+                            <a href="{{ asset('storage/pdf/' . $info->file_path) }}" download>{{ $info->nama_file }}</a>
                         </td>
                         <td>
                             <p name="tgl_pinjam">{{ $info->tanggal_pemesanan }}</p>
