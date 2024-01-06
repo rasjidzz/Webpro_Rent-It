@@ -129,7 +129,7 @@ class AdminFacilityController extends Controller
         // ddd($request);
         $rules = [
             'category_id' => 'required',
-            'harga' => 'required',
+            'price' => 'required',
             'description' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahan
         ];
