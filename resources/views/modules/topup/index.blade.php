@@ -58,12 +58,11 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="topupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal" tabindex="-1" id="topupModal">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Terima Kasih!</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -73,6 +72,7 @@
                 </div>
                 <div class="modal-footer">
                     <button id="tutup" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="proses">Proses</button>
                 </div>
             </div>
         </div>
@@ -85,13 +85,13 @@
             $('button[name="balance_option"]').click(function() {
                 var selectedBalance = $(this).val();
                 $('#selectedBalance').val(selectedBalance);
-                $('#modalContent').text('Terima kasih sudah melakukan topup sebesar Rp ' + numberWithCommas(
+                $('#modalContent').text('Anda akan melakukan topup sebesar Rp ' + numberWithCommas(
                     selectedBalance));
                 $('#topupModal').modal('show');
             });
 
-            // Event handler ketika tombol Batal di dalam modal ditekan
-            $('#tutup').on('click', function() {
+            // Event handler ketika tombol proses di dalam modal ditekan
+            $('#proses').on('click', function() {
                 var selectedBalance = $('#selectedBalance').val(); // Mendapatkan nilai saldo yang dipilih
                 $('#topupModal').modal('hide'); // Menutup modal ketika tombol Batal ditekan
 
@@ -110,9 +110,13 @@
                         console.error('Error during top-up');
                     }
                 });
-
                 location.reload(); // Merefresh halaman setelah menutup modal
             });
+        });
+
+        // Event handler ketika tombol Close di dalam modal ditekan
+        $('#tutup').on('click', function() {
+            $('#topupModal').modal('hide'); // Menutup modal ketika tombol Batal ditekan
         });
 
         // Fungsi untuk menambahkan pemisah ribuan pada nilai saldo

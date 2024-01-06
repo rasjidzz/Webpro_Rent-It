@@ -37,7 +37,7 @@
     @yield('container')
 
     @if (!(Request::is('login') || Request::is('register') || Request::is('topup')))
-    @include('partials.footer')
+        @include('partials.footer')
     @endif
     <!-- FOOTER -->
 

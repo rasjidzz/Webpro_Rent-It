@@ -23,11 +23,12 @@ class StatusController extends Controller
             'title' => 'StatusPemesanan',
             'daftarPemesanan' => $daftarPemesanan,
             'warna' => $colors,
-            'waiting' => $daftarPemesanan->where('status', 'Waiting')->count(),
-            'approved' => $daftarPemesanan->where('status', 'Approved')->count(),
-            'denied' => $daftarPemesanan->where('status', 'Rejected')->count(),
-            'active' => $daftarPemesanan->where('status', 'Active')->count(),
-            'completed' => $daftarPemesanan->where('status', 'Completed')->count(),
+            'waiting' => Pemesanan::where('user_id', $user->id)->where('status', 'Waiting')->count(),
+            'approved' => Pemesanan::where('user_id', $user->id)->where('status', 'Approved')->count(),
+            'denied' => Pemesanan::where('user_id', $user->id)->where('status', 'Rejected')->count(),
+            'active' => Pemesanan::where('user_id', $user->id)->where('status', 'Active')->count(),
+            'completed' => Pemesanan::where('user_id', $user->id)->where('status', 'Completed')->count(),
+            'canceled' => Pemesanan::where('user_id', $user->id)->where('status', 'Canceled')->count()
         ];
 
         return view('modules.orderStatusPage.index', $data);
@@ -46,7 +47,16 @@ class StatusController extends Controller
             $color = '006400';
         }elseif($daftarPemesanan->status === "Completed"){
             $color = '000080';
+        }elseif($daftarPemesanan->status === "Canceled"){
+            $color = 'ff0000';
         }
         return $color;
+    }
+    public function getPemesananDetail(Request $request){
+        $pesanan_id = $request->input('pesanan_ID');
+        $pemesanan = Pemesanan::find($pesanan_id);
+        $reason = $pemesanan->note;
+        return response()->json($reason);
+
     }
 }

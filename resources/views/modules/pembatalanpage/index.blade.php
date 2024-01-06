@@ -1,119 +1,121 @@
 @extends('layouts.main')
 @section('container')
 <section>
-    <div id="PilihFasilitas" style="border: 2px white; padding: 20px; background-color: white; border-radius: 10px; margin-bottom: 50px;">
-        <div class="" style="text-align: center; color: white;">
-            <h1 style="font-weight: bold; color: black;">PEMBATALAN</h1>
-            <div class="" style="text-align: left; color: white;">
-                <h5 style="color: black;">Pesanan Yang Ingin Dibatalkan</h5>
-            </div>
-        </div>
-
-        <select class="form-select margin-bottom: 50px" aria-label="Default select example">
-            <option selected>Pilih Fasilitas</option>
-            <option value="1">Gedung Kuliah Umum</option>
-            <option value="2">Telkom University Landmark Tower</option>
-            <option value="3">Auditorium</option>
-        </select>
-        <br>
-        <button type="button" class="btn btn-danger">Cari Fasilitas</button>
-    </div>
-
-
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="auto" style="margin-bottom: 10%;">
-                    <div class="d-flex" style="background-color: #ECE8E8;">
-                        <img src="Assets/GKU.jpg" heigth="" width="200px" class="w-20" alt="GKU" />
-                        <div class="my-auto ms-2">
-                            <h2 class="fs-2 fw-3" style="margin-bottom: 5%;">Gedung kuliah umum</h2>
-                            <h3 style="color: #9F1521; font-weight: 400; font-size: 25px;">Rp 500.000.00</h3>
+        <div id="PilihFasilitas" style="border: 2px white; padding: 20px; background-color: white; border-radius: 10px; margin-bottom: 50px;">
+            <div class="" style="text-align: center; color: white;">
+                <h1 style="font-weight: bold; color: black;">PEMBATALAN</h1>
+                <div class="" style="text-align: left; color: white;">
+                    <h5 style="color: black;">Pesanan Yang Ingin Dibatalkan</h5>
+                </div>
+            </div>
+
+            <form action="/cancelpesanan" method="post">
+                @csrf
+                {{-- <select class="form-select margin-bottom: 50px" onchange="fetchData()" id="selectFasilitas" name="selectedFacility"> --}}
+                <select class="form-select margin-bottom: 50px" onchange="getPemesanan()" id="selectFasilitas" name="selectedFacility">
+                    <option>Pilih Fasilitas</option>
+                    @foreach ($pembatalans as $pembatalan)
+                        {{-- <option value="{{ $pembatalan->facility->id }}">{{ $pembatalan->facility->name }}. Tanggal, {{ $pembatalan->tanggal_pemesanan }}</option> --}}
+                        <option value="{{ $pembatalan->id }}">{{ $pembatalan->facility->name }}. Tanggal, {{ $pembatalan->tanggal_pemesanan }}</option>
+                    @endforeach
+                </select>
+                <input type="hidden" id="hiddenPemesananID">
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col">
+                            <div class="auto" style="margin-bottom: 10%;">
+                                <div class="d-flex" style="background-color: #ECE8E8;">
+                                    <img src="" heigth="" width="200px" class="w-20" alt="" id="foto_fasilitas" />
+                                    <div class="my-auto ms-2">
+                                        <h2 class="fs-2 fw-3" style="margin-bottom: 5%;" id="nama_fasilitas">Nama Fasilitas</h2>
+                                        <h3 style="color: #9F1521; font-weight: 400; font-size: 25px;" id="harga_fasilitas">Harga Fasilitas</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-</section>
-
-<section>
-    <div class="container border border-1 border-dark rounded-2" style="height: 350px;">
-        <h3 id="upload" class="text-center mb-5 fw-normal">Upload Dokumen Pendukung</h3>
-        <div class="dropArea" style="position: relative; border: 2px dashed #ccc; padding: 20px; text-align: center; height:150px;">
-            <input class="file-input" type="file" accept=".pdf, .docx" id="fileInput" multiple style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
-            <i id="logoDL" class="fs-1 mdi mdi-arrow-down-box mt-3"></i>
-            <br>
-            <label for="fileInput" id="inputFile">Click Here Or Drag To Choose Your Files</label>
-            <p id="fileList" style="font-size: 14px; display: none;"></p> <!-- Moved the file list inside the dropArea -->
+                <section>
+                    <div class="container mb-3">
+                        <label for="description" class="form-label">Alasan Pembatalan</label>
+                        <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+                        @error('description')
+                        <p class="text-danger">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                        <button class="btn btn-danger my-3" type="submit">
+                            Batal
+                        </button>
+                    </div>
+                </section>
+            </form>
         </div>
-        <p id="acc" style="font-size: 12px; color:darkgrey;">Accepted File: .pdf .docx</p>
-        <form action="" id="tombol">
-            <a class="btn btn-danger mt-3" type="submit" href="/pembatalanpage2" >Ajukan Pembatalan</a>
-        </form>
     </div>
 </section>
 
-</div>
 
 <script>
-    const dropArea = document.querySelector(".dropArea");
-    const inputFile = document.querySelector("#fileInput");
-    const inputFileLabel = document.querySelector("label[for='fileInput']");
-    const fileList = document.querySelector("#fileList");
-    const selectedFiles = []; // Menyimpan file yang telah dipilih
+    function getPemesanan(){
 
-    dropArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        dropArea.style.backgroundColor = "#f7f7f7";
-    });
+        var dropdown = document.getElementById("selectFasilitas");
+        var pemesananId = dropdown.value;
 
-    dropArea.addEventListener("dragleave", () => {
-        dropArea.style.backgroundColor = "transparent";
-    });
-
-    dropArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        dropArea.style.backgroundColor = "transparent";
-
-        const files = e.dataTransfer.files;
-
-        if (files.length > 0) {
-            for (let i = 0; i < files.length; i++) {
-                selectedFiles.push(files[i]); // Menyimpan file ke dalam array
+        $.ajax({
+            url: '/getpemesananinfo',
+            type: 'POST',
+            data: {
+                pemesanan_id: pemesananId
+            },
+            success: function (response) {
+                console.log(response);
+                // console.log('Public/Assets/'+response.image);
+                document.getElementById("nama_fasilitas").innerText = response.name;
+                document.getElementById("harga_fasilitas").innerText = formatCurrency(response.price);
+                // Menetapkan gambar fasilitas
+                var imgElement = document.getElementById("foto_fasilitas");
+                imgElement.src = '{{ asset("storage/") }}' + '/' + response.image;
+                imgElement.alt = response.name;  // Menetapkan teks alternatif untuk gambar
+            },
+            error: function (error) {
+                console.error('Complete error:', error);
             }
+        });
+    }
+    function fetchData() {
+        // console.log("masuk");
+        // Mendapatkan elemen dropdown
+        var dropdown = document.getElementById("selectFasilitas");
 
-            displaySelectedFiles();
-        }
-    });
+        // Mendapatkan nilai terpilih dari dropdown
+        var selectedFacilityId = dropdown.value;
 
-    inputFile.addEventListener("change", () => {
-        const files = inputFile.files;
-
-        if (files.length > 0) {
-            for (let i = 0; i < files.length; i++) {
-                selectedFiles.push(files[i]); // Menyimpan file ke dalam array
+        $.ajax({
+            url: '/getfacilityinfo',
+            type: 'POST',
+            data: {
+                facility_id: selectedFacilityId
+            },
+            success: function (response) {
+                // console.log(response);
+                // console.log('Public/Assets/'+response.image);
+                document.getElementById("nama_fasilitas").innerText = response.name;
+                document.getElementById("harga_fasilitas").innerText = formatCurrency(response.price);
+                // Menetapkan gambar fasilitas
+                var imgElement = document.getElementById("foto_fasilitas");
+                imgElement.src = '{{ asset("storage/") }}' + '/' + response.image;
+                imgElement.alt = response.name;  // Menetapkan teks alternatif untuk gambar
+            },
+            error: function (error) {
+                console.error('Complete error:', error);
             }
+        });
+    }
 
-            displaySelectedFiles();
-        }
-        console.log(SelectedFiles);
-    });
-
-    function displaySelectedFiles() {
-        inputFileLabel.style.display = "none";
-        fileList.style.display = "block";
-        fileList.innerHTML = ""; // Membersihkan daftar sebelum menambahkan kembali
-
-        for (let i = 0; i < selectedFiles.length; i++) {
-            const fileItem = document.createElement("div");
-            fileItem.innerText = selectedFiles[i].name;
-            fileItem.style.marginBottom = "5px";
-            fileItem.style.fontSize = "13px";
-            fileList.appendChild(fileItem);
-        }
-
-        document.getElementById("logoDL").style.display = "none";
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount);
     }
 </script>
 

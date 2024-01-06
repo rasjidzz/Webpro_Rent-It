@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pemesanans', function (Blueprint $table) {
+        Schema::create('kerusakans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index();
-            $table->foreignId('facility_id')->index();
-            $table->date('tanggal_pemesanan');
+            $table->foreignId('pemesanan_id');
+            $table->foreignId('user_id');
+            $table->string('deskripsi')->nullable();
             $table->string('status')->default('Waiting');
-            $table->string('nama_file');
-            $table->string('file_path');
-            $table->string('nomor_tlp')->nullable();
-            $table->string('note')->nullable();
             $table->timestamps();
+            // $table->string('nama_file');
+            // $table->string('file_path');
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemesanans');
+        Schema::dropIfExists('kerusakans');
     }
 };

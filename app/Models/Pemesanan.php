@@ -15,6 +15,7 @@ class Pemesanan extends Model
         'nama_file',
         'file_path',
         'nomor_tlp',
+        'note',
     ];
 
     use HasFactory;
@@ -37,8 +38,9 @@ class Pemesanan extends Model
             return $this->where('status', 'Waiting')->count();
         } elseif ($type === 'history') {
             return $this->whereIn('status', ['approved', 'rejected'])->count();
-        } else {
-            // Handle other types if needed
+        } elseif ($type === 'cancel') {
+            return $this->where('status', 'canceled')->count();
+        }else {
             return 0;
         }
     }
