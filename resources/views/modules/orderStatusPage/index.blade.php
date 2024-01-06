@@ -137,7 +137,6 @@
                 <div class="row g-0">
                     <div class="col-6 col-md-2">
                         <td>
-                            {{-- <img src="{{ asset($pesanan->facility->image) }}" alt="{{ $pesanan->facility->slug }}" width="90px" height="90px" name="{{ $pesanan->facility->slug }}"> --}}
                             @foreach (explode(', ', $pesanan->facility->image) as $index => $imagePath)
                                 <img src="{{ asset('storage/' . $imagePath) }}" class="d-block w-100 h-100"
                                     alt="{{ $pesanan->facility->slug }}-{{ $index + 1 }}" class="rounded" width="300"
@@ -150,7 +149,6 @@
                     <div class="card-body">
                         <h5 class="card-title fs-2 font-family-Open Sans" name="nama_bayar">
                             {{ $pesanan->facility->name }}</h5>
-                        {{-- <p class="card-text text-danger font-family-Open Sans" name="harga_bayar">Rp {{ $pesanan->facility->price }}</p> --}}
                         <p class="card-text text-danger font-family-Open Sans" name="harga_bayar">
                             <span class="formatted-price" data-raw-price="{{ $pesanan->facility->price }}">
                                 Rp {{ $pesanan->facility->price }}
@@ -170,13 +168,19 @@
                     @endif
                     @if ($pesanan->status === 'Rejected')
                         <a class="btn btn-danger mx-3 my-3"
-                            onclick="openModalDetail({{ $pesanan->id }}, {{ $pesanan->facility->price }})">
+                            onclick="openModalDetail({{ $pesanan->id }}, {{ $pesanan->facility->price }}, 'Rejected')">
                             Detail Penolakan
                         </a>
                     @endif
                     @if ($pesanan->status === 'Active')
                         <a class="btn btn-danger mx-3 my-3" onclick="completeRent({{ $pesanan->id }})">
                             Complete
+                        </a>
+                    @endif
+                    @if($pesanan->status === 'Canceled')
+                        <a class="btn btn-danger mx-3 my-3"
+                            onclick="openModalDetail({{ $pesanan->id }}, {{ $pesanan->facility->price }}, 'Cancelation')">
+                            Detail Pembatalan
                         </a>
                     @endif
                 </div>
@@ -223,11 +227,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Rejected</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4>Alasan Penolakan</h4>
+                <h4 id="headingModal"></h4>
                 <!-- Add the following line to display the note -->
                 <p id="alasanPenolakan">Reason: </p>
             </div>
@@ -241,11 +245,15 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-    function openModalDetail(pesananId, hargasewa) {
+    function openModalDetail(pesananId, hargasewa, tipe) {
         $('#tagihan').text('Tagihan: ' + hargasewa);
+
+        // Set modal titles based on the 'tipe' value
+        $('#staticBackdropLabel').text(tipe);
+        $('#headingModal').text('Detail ' + tipe);
+
         $('#modalDetail').modal('show');
-        // console.log("Modal harga : ", hargasewa);
-        // console.log("Pesanan Id : ", pesananId);
+
         $.ajax({
             url: '/getpemesanandetail',
             type: 'POST',
@@ -253,14 +261,14 @@
                 pesanan_ID: pesananId
             },
             success: function(response) {
-                // console.log(response);
-                $('#alasanPenolakan').text('Reason: ' + response);
+                $('#alasanPenolakan').text('Deskripsi : ' + response);
             },
             error: function(error) {
                 console.error('Complete error:', error);
             }
         });
     }
+
     var hargaSewa = 0;
     var pesananID = 0;
 

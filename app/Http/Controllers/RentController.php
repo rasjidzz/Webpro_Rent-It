@@ -11,6 +11,10 @@ use Illuminate\Contracts\Support\ValidatedData;
 
 class RentController extends Controller
 {
+    protected $facilityModel;
+    public function __construct(){
+        $this->facilityModel = new Facility();
+    }
     public function index(Request $request)
     {
         $facilityId = $request->input('facility_id');
@@ -49,7 +53,6 @@ class RentController extends Controller
         $noTel = $request->input('noTel');
         $file = $request->file("inputFile");
 
-        // dd($data);
         $validatedData = $request->validate([
             "facility_id" => "required",
             "user_id" => "required",
@@ -61,13 +64,16 @@ class RentController extends Controller
             "inputFile" => "required|file|mimes:pdf"
         ]);
 
+        $facilitySlug = $this->facilityModel->getSlugbyID($facilityId);
+
         if ($request->hasFile('inputFile')) {
             $name = $validatedData['nama'];
             $nim = $validatedData['nim'];
             $facilityID = $validatedData['facility_id'];
             $extension = $file->getClientOriginalExtension();
-            $namafile = $name . '-' . $facilityID . $nim;
-            $filename = $name . '-' . $nim . '-' . $facilityID . '-' . '.' . $extension;
+            // $namafile = $name . '-' . $facilityID . '-' . $validatedData['tanggalSewa'] . '-' . $nim;
+            $namafile = $name . '-' . $nim . '-' . $facilitySlug . '-' . $validatedData['tanggalSewa'];
+            $filename = $name . '-' . $nim . '-' . $facilitySlug . '-' . $validatedData['tanggalSewa'] . '.' . $extension;
 
             // Here you can use $filename as the complete filename with extension
             // For example, you can save it to storage or move it to a specific directory
