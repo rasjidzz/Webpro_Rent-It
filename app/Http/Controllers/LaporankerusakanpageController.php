@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pemesanan;
 use App\Models\Facility;
 use App\Models\Kerusakan;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 
 class LaporankerusakanpageController extends Controller
@@ -13,7 +13,7 @@ class LaporankerusakanpageController extends Controller
     {
         $data = [
             'title' => 'Laporankerusakanpage',
-            'pemesanans' => Pemesanan::where('status', 'Completed')->get()
+            'pemesanans' => Pemesanan::where('status', 'Completed')->where('user_id', auth()->user()->id)->get()
         ];
         // dd($data);
         return view('modules.laporankerusakanpage.index', $data);
@@ -42,7 +42,8 @@ class LaporankerusakanpageController extends Controller
         return response()->json($facilityData);
     }
 
-    public function getPemesananInfo(Request $request){
+    public function getPemesananInfo(Request $request)
+    {
         $pemesananId = $request->input('pemesanan_id');
         $pemesanan = Pemesanan::find($pemesananId);
         // return response()->json($pemesanan);
@@ -69,7 +70,8 @@ class LaporankerusakanpageController extends Controller
         return response()->json($facilityData);
     }
 
-    public function postLaporanKerusakan(Request $request){
+    public function postLaporanKerusakan(Request $request)
+    {
         // Validasi form jika diperlukan
         $request->validate([
             'selectedFacility' => 'required',
@@ -91,5 +93,4 @@ class LaporankerusakanpageController extends Controller
 
         return redirect('status_pemesanan')->with('success', 'Laporan kerusakan berhasil diajukan');
     }
-
 }
