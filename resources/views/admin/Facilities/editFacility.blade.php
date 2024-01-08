@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center border-bottom pt-3 pb-2 mb-3">
         <h1>Edit Facility : {{ $facility->name }}</h1>
     </div>
-    
+
     <div class="col">
         <form method="POST" action="/admin/facilities/{{ $facility->slug }}" enctype="multipart/form-data">
             @method('put')
@@ -34,22 +34,22 @@
                   <option selected>Select Category</option>
                   @foreach ($categories as $category)
                   @if (old('category_id', $facility->category_id) == $category->id)
-                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>            
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                     @else
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>            
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                   @endif
                   @endforeach
                 </select>
               </div>
               <div class="mb-3">
-                <label for="harga" class="form-label">Harga Fasilitas</label>
-                <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" inputmode="numeric" pattern="[0-9]*" value="{{ old('harga', $facility->harga) }}">
-                  @error('harga')
+                <label for="price" class="form-label">Harga Fasilitas</label>
+                <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" inputmode="numeric" pattern="[0-9]*" value="{{ old('price', $facility->price) }}">
+                  @error('price')
                       <div class="invalid-feedback">
                           {{ $message }}
                       </div>
                   @enderror
-              </div>            
+              </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 {{-- <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description"> --}}
@@ -63,7 +63,7 @@
               <div class="mb-3">
                 <label for="image" class="form-label">Image 1</label>
                 @if ($facility->image)
-                    <img src="{{ asset('storage/' . explode(', ', $facility->image)[0]) }}" class="img-preview-1 img-fluid mb-3 col-sm-5 d-block" alt="Image 1"> 
+                    <img src="{{ asset('storage/' . explode(', ', $facility->image)[0]) }}" class="img-preview-1 img-fluid mb-3 col-sm-5 d-block" alt="Image 1">
                 @else
                     <img class="img-preview-1 img-fluid mb-3 col-sm-5">
                 @endif
