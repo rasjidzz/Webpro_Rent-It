@@ -1,3 +1,16 @@
+## About Git merge_risjad_ashar 
+Merged branch :
+- Risjad
+- Ashar
+- Stevent (progress)
+- Surya
+- Zhafran (Progress, pembayaran)
+
+To do :
+- Juliandri
+- Zhafran
+
+
 ## About Rent-It
 
 Rent-It adalah sebuah aplikasi inovatif yang dibangun menggunakan framework web Laravel, yang menawarkan pengalaman pengembangan yang ekspresif dan elegan. Kami percaya bahwa pengembangan harus menjadi pengalaman yang menyenangkan dan kreatif agar benar-benar memuaskan. Rent-It hadir untuk menyederhanakan dan meningkatkan proses peminjaman fasilitas kampus, membuatnya lebih efisien dan teratur.

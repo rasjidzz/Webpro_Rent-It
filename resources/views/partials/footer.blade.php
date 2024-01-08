@@ -1,4 +1,8 @@
-<footer class="bg-dark p-3">
+@if (Request::is('laporankerusakanpage') || Request::is('pembatalanpage'))
+    <footer class="bg-dark p-3 fixed-bottom">
+@else
+    <footer class="bg-dark p-3">
+@endif
     <div class="container-fluid">
         <div class="row d-flex align-items-center">
             <div class="col-md-6 text-center">

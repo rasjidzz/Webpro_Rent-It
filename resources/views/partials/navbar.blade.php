@@ -15,15 +15,19 @@
                     <a class="nav-link {{  Request::is('facility') ? 'active' : ' ' }}" href="/facility">Facility</a>
                 </li>
                 @auth
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Other
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="nav-link {{  Request::is('pembatalanpage') ? 'active' : ' ' }}" href="/pembatalanpage" >Pembatalan</a></li>
-                        <li><a class="nav-link {{  Request::is('laporankerusakanpage') ? 'active' : ' ' }}" href="/laporankerusakanpage" >Laporan Kerusakan</a></li>
-                    </ul>
-                </li>
+                @if(auth()->user()->isAdmin)
+                    {{-- Jika admin login, tidak menampilkan menu "Other" --}}
+                @else
+                    <li class="nav-item dropdown" id="Other">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Other
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="nav-link {{ Request::is('pembatalanpage') ? 'active' : ' ' }}" href="/pembatalanpage" >Pembatalan</a></li>
+                            <li><a class="nav-link {{ Request::is('laporankerusakanpage') ? 'active' : ' ' }}" href="/laporankerusakanpage" >Laporan Kerusakan</a></li>
+                        </ul>
+                    </li>
+                @endif
                 @endauth
             </ul>
         </div>
@@ -33,11 +37,17 @@
                 Hello, {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                @if (auth()->user()->isAdmin)
+                <li><a class="dropdown-item" href="/admin/dashboard">Dashboard Admin</a></li>
+                @else
                 <li><a class="dropdown-item" href="/status_pemesanan">Status Pemesanan</a></li>
-                <li role="separator" class="dropdown-divider"></li> 
+                <li role="separator" class="dropdown-divider"></li>
                 <li><span class="dropdown-item-text" >Saldo : </span></li>
-                <li><span class="dropdown-item-text" id="saldo"></span></li> 
-                <li role="separator" class="dropdown-divider"></li> 
+                <li><span class="dropdown-item-text" id="saldo"></span></li>
+                <li><a class="dropdown-item" href="/topup">Top Up</a></li>
+                <li role="separator" class="dropdown-divider"></li>
+                @endif
+
                 <li>
                     <form action="/logout" method="POST">
                         @csrf
@@ -45,12 +55,12 @@
                     </form>
                 </li>
             </ul>
-        </div>        
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        </div>
+        {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
+        </form> --}}
         @else
-       
+
         @endauth
     </div>
 </nav>

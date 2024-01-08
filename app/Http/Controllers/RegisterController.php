@@ -25,6 +25,13 @@ class RegisterController extends Controller
             'password' => ['required', 'min:5', 'max:255'],
             'nim' => ['required', 'max:10', 'unique:users']
         ]);
+
+        // TAMBAHAN
+        $isAdmin = $request->has('isAdmin') ? 1 : 0;
+
+        $validatedData['isAdmin'] = $isAdmin;
+        // TAMBAHAN
+
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         // Buat wallet untuk pengguna baru

@@ -22,7 +22,7 @@
                         <div class="icon-contain">
                             <div class="row d-flex justify-content-between">
                                 <div class="col-md-7 align-self-center">
-                                    <img src="Assets/GedungPerkuliahan/GKU/GKU-1.jpg" alt="GKU" width="100%"
+                                    <img src="Assets/Fasilitas/GKU-1.jpg" alt="GKU" width="100%"
                                         style="max-width: 400px; height: auto;">
                                 </div>
                                 <div class="col-md-5 text-end">

@@ -16,11 +16,14 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category');
+            $table->foreignId('category_id');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->string('photo');
+            $table->string('image')->nullable();
+            $table->integer('price');
             $table->timestamps();
+            // $table->string('category');
+            // $table->string('photo');
         });
     }
 

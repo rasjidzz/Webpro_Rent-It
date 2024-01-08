@@ -52,40 +52,58 @@
         }
     </style>
 
-    <div class="container my-5">
+<div class="container my-5">
+    <form action="/rent" method="POST" enctype="multipart/form-data">
+        @csrf
         <section class="row gap-4 justify-content-center">
             <div id="box1" class="col-sm-4 w-30 rounded-3 border border-1 border-secondary px-0">
-                <!-- $s->gambar -->
-                <img src="/Assets/GedungPerkuliahan/GKU/GKU-1.jpg" class="card-img-top">
+                {{-- <img src="/Assets/Fasilitas/{{ $facility->slug }}-2.jpg" class="card-img-top"> --}}
+
                 <div class="card-body">
-                    <h5 class="card-title text-center">Gedung Kuliah Umum</h5>
-                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eum assumenda
-                        error distinctio quibusdam, quod incidunt sequi repudiandae quasi unde!</p>
+                    <h4 class="card-title text-center">{{ $facility->name }}</h4>
+                    <p>
+                        <span class="formatted-price" data-raw-price="{{ $facility->price }}">
+                            Rp {{ $facility->price }}
+                        </span>
+                    </p>
+                    <p class="card-text">{{ $facility->description }}</p>
                 </div>
             </div>
             <div id="box2" class="col-sm-6 w-40 rounded-3 border border-1 border-secondary">
                 <h3 class=" text-center m-4" style="font-family: 'Open Sans', 'Helvetica Neue', sans-serif;">Data Diri
                     Pengguna</h3>
                 <div class="mb-3 ">
+                    <label for="nama" class="form-label">Tanggal Sewa</label>
+                    <input readonly type="text" value={{ $tanggalSewa }} class="form-control" name="tanggalSewa">
+                    <div id="errorNama" class="text-danger"></div>
+                </div>
+                <div class="mb-3 ">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama">
+                    <input type="text" class="form-control" id="nama" name="nama"
+                        value="{{ auth()->user()->name }}">
                     <div id="errorNama" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
                     <label for="nim" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="nim">
+                    <input type="number" class="form-control" id="nim" name="nim"
+                        value="{{ auth()->user()->nim }}">
                     <div id="errorNim" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" class="form-control" id="email" name="email"
+                        value="{{ auth()->user()->email }}">
                     <div id="errorEmail" class="text-danger"></div>
                 </div>
                 <div class="mb-3 ">
                     <label for="noTel" class="form-label">No Telepon</label>
-                    <input type="number" class="form-control" id="noTel">
+                    <input type="number" class="form-control" id="noTel" name="noTel">
                     <div id="errorTelepon" class="text-danger"></div>
                 </div>
+                <input hidden type="number" class="form-control" id="user_id" name="user_id"
+                    value="{{ auth()->user()->id }}">
+                <input hidden type="number" class="form-control" id="facility_id" name="facility_id"
+                    value={{ $facility->id }}>
             </div>
         </section>
 
@@ -94,21 +112,21 @@
                 <h3 id="upload" class="text-center mb-5 fw-normal mt-3">Upload Dokumen Pendukung</h3>
                 <div class="dropArea"
                     style="position: relative; border: 2px dashed #ccc; padding: 20px; text-align: center; height:150px;">
-                    <input class="file-input" type="file" accept=".pdf, .docx" id="fileInput" multiple
+                    <input class="file-input" type="file" accept=".pdf, .docx" id="fileInput" name="inputFile"
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
                     <i id="logoDL" class="fs-1 mdi mdi-arrow-down-box mt-3"></i>
                     <br>
                     <label for="fileInput" id="inputFile">Click Here Or Drag To Choose Your Files</label>
                     <p id="fileList" style="font-size: 14px; display: none;"></p>
                 </div>
-                <p id="acc" style="font-size: 12px; color:darkgrey;">Accepted File: .pdf .docx</p>
-                <form action="" id="tombol">
-                    <a class="btn btn-danger mt-3" type="submit" href="/konfirmasi">Ajukan Permintaan</a>
-                </form>
+                <p id="acc1" class="my-0" style="font-size: 12px; color:darkgrey;">Max File: 2MB</p>
+                <p id="acc2" style="font-size: 12px; color:darkgrey;">Accepted File: .pdf</p>
             </div>
         </section>
-
-    </div>
+        <button class="btn btn-danger mt-3" id="tombol" type="submit">Ajukan
+            Permintaan</button>
+    </form>
+</div>
 
     <script>
         let hasFiles = false;
@@ -221,5 +239,18 @@
                 e.preventDefault();
             }
         });
+        document.querySelectorAll('.formatted-price').forEach(function (element) {
+        // Mengambil nilai harga dari data-raw-price
+        var rawPrice = element.getAttribute('data-raw-price');
+
+        // Memformat harga dengan fungsi formatCurrency
+        var formattedPrice = formatCurrency(rawPrice);
+
+        // Mengganti teks pada elemen dengan harga yang diformat
+        element.innerText = formattedPrice;
+    });
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount);
+    }
     </script>
 @endsection
