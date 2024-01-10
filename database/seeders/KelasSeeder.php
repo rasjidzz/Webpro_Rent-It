@@ -34,11 +34,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'id_facility' => '2',
-                'room' => '0401',
-            ],
-            [
-                'id_facility' => '3',
-                'room' => '0204',
+                'room' => '0402',
             ],
             [
                 'id_facility' => '3',
@@ -51,6 +47,10 @@ class KelasSeeder extends Seeder
             [
                 'id_facility' => '3',
                 'room' => '0203',
+            ],
+            [
+                'id_facility' => '3',
+                'room' => '0204',
             ],
         ];
         DB::table('kelas')->insert($class);

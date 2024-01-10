@@ -25,6 +25,16 @@
         }
     </style>
     <section>
+        @if(session('failed'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oh no...',
+                    text: '{{ session('failed') }}',
+                })
+            </script>
+        @endif
+
         <!-- img background and buttton in img -->
         <div class="row background-row d-flex container-fluid" style="align-items: end; justify-content: center">
             <div class="d-flex" style="justify-content: center">
@@ -84,31 +94,32 @@
                     <div class=" card card-body">
                         <div class="dropdown row">
                             <div class="col-lg-6 ">
-                                <p class="fs-1">Gedung</p>
-                                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example"
-                                    onchange="updateKelas()" id="gedungPerkuliahan">
+                                <form action="/checkAvailabilityKelas" method="POST">
+                                    @csrf
+                                    <p class="fs-1">Gedung</p>
+                                    <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example"
+                                    onchange="updateKelas()" id="gedungPerkuliahan" name="gedungPerkuliahan">
                                     <option selected>Pilih gedung</option>
                                     @foreach ($classes as $gedung)
-                                        <option value="{{ $gedung->id }}">{{ $gedung->name }}</option>
+                                    <option value="{{ $gedung->id }}">{{ $gedung->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-2">
                                 <p class="fs-1">Kelas</p>
-                                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example"
-                                    id="kelasPerkuliahan">
+                                <select class="form-select form-select-lg mb-3 col-4" aria-label="Large select example" id="kelasPerkuliahan" name="kelasPerkuliahan">
                                     <option selected>Pilih Kelas</option>
                                 </select>
                             </div>
                             <div class="col-lg-4">
                                 <p class="fs-1">Tanggal</p>
-                                <input type="date" class="form-control  form-select-lg mb-3 col-4" id="tanggal_sewa"
-                                    aria-label="Large select example" placeholder="Contoh : 12.30-15.30">
+                                <input type="date" class="form-control  form-select-lg mb-3 col-4" id="tanggal_sewa" aria-label="Large select example" placeholder="Contoh : 12.30-15.30" name="tanggal_sewa">
                                 <div class="col" style="padding-top: 20px;">
-                                    <a class="btn" href="#"
-                                        style="background-color: #9f1521; color: #fff;border-color: #9f1521; " onclick="return validateForm() ? window.location.href='/rentpage' : null">Submit</a>
+                                    {{-- <a class="btn" href="#" style="background-color: #9f1521; color: #fff;border-color: #9f1521; " onclick="checkAvailabilityKelas()">Submit</a> --}}
+                                    <button class="btn" type="submit" style="background-color: #9f1521; color: #fff;border-color: #9f1521; ">Submit</button>
                                 </div>
                             </div>
+                        </form>                            
                         </div>
                     </div>
                 </div>
@@ -231,7 +242,8 @@
                     if (response.length != 0) {
                         for (var i = 0; i < response.length; i++) {
                             var room = response[i]['room'];
-                            var option = $('<option></option>').attr('value', room).text(room);
+                            var idRoom = response[i]['id'];
+                            var option = $('<option></option>').attr('value', idRoom).text(room);
                             dropdown.append(option);
                         }
                     } else {
@@ -246,17 +258,32 @@
             })
         }
 
-        function validateForm() {
-        var gedung = document.getElementById('gedungPerkuliahan').value;
-        var tanggal = document.getElementById('tanggal_sewa').value;
+        // function checkAvailabilityKelas() {
+        //     var gedungPerkuliahan = document.getElementById('gedungPerkuliahan').value;
+        //     var tanggalPinjam = document.getElementById('tanggal_sewa').value;
+        //     var kelasPerkuliahan = document.getElementById('kelasPerkuliahan').value;
 
-        // Validasi jika gedung atau tanggal kosong
-        if (gedung == '' || tanggal == '') {
-            alert('Harap isi Gedung dan Tanggal sebelum melanjutkan.');
-            return false;
-        }
-        return true;
-    }
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/checkAvailabilityKelas',
+        //         data: {
+        //             gedung_perkuliahan: gedungPerkuliahan,
+        //             tanggal_pinjam: tanggalPinjam,
+        //             kelas_perkuliahan: kelasPerkuliahan,
+        //             _token: '{{csrf_token()}}'
+        //         },
+        //         success: function(response){
+        //             console.log(response);
+        //         },
+        //         error: function(xhr, status, error){
+        //             console.log(error);
+        //         }
+        //     })
+
+        //     console.log('Gedung Perkuliahan : ', gedungPerkuliahan);
+        //     console.log('Kelas Perkuliahan : ', kelasPerkuliahan);
+        //     console.log('Tanggal Sewa : ', tanggalPinjam);
+        // }
 
 
     </script>

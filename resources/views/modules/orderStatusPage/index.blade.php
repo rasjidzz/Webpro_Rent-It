@@ -192,7 +192,8 @@
         </div>
     @endforeach
     <div class="d-flex justify-content-center">
-        {!! $daftarPemesanan->links() !!}
+        {{-- {!! $daftarPemesanan->links() !!} --}}
+        {{-- {!! $mergedDaftar->links() !!} --}}
     </div>
 </div>
 

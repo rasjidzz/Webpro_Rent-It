@@ -44,6 +44,7 @@ Route::get('/facility', [FacilityController::class, 'index']);
 Route::get('/homepage', [HomepageController::class, 'index'])->middleware('auth');
 Route::post('/updateKelas', [HomepageController::class, 'fetchKelasbyFacilityId']);
 Route::post('/checkAvailability', [HomepageController::class, 'checkAvailability']);
+Route::post('/checkAvailabilityKelas', [HomepageController::class, 'checkAvailabilityKelas']);
 
 //Pembatalanpage
 Route::get('/pembatalanpage', [PembatalanController::class, 'index'])->middleware('auth');
@@ -70,7 +71,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 //Status Pemesanan
 Route::get('/status_pemesanan', [StatusController::class, 'index'])->middleware('auth');
-Route::post('/getpemesanandetail', [StatusController::class,'getPemesananDetail'])->middleware('auth');
+Route::post('/getpemesanandetail', [StatusController::class, 'getPemesananDetail'])->middleware('auth');
 
 // Pembayaran
 Route::post('/bayar', [PembayaranController::class, 'bayar']);
@@ -83,6 +84,7 @@ Route::post('/topup', [TopUpController::class, 'store'])->middleware('auth')->na
 // Rent Page
 // Route::get('/rentpage', [RentController::class, 'index'])->middleware('auth');
 Route::post('/rent', [RentController::class, 'store'])->middleware('auth');
+Route::post('/rentKelas', [RentController::class, 'storeKelas'])->middleware('auth');
 
 // ROUTES UNTUK ADMIN
 

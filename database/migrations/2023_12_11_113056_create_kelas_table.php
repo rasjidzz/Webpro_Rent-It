@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_facility');
-            $table->string('room');
+            $table->string('room')->unique();
             $table->timestamps();
         });
     }

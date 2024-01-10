@@ -18,7 +18,8 @@ class Facility extends Model
         'price'
     ];
 
-    public function getSlugbyID($facility_id){
+    public function getSlugbyID($facility_id)
+    {
         $facility = Facility::where('id', $facility_id)->first();
         return $facility->slug;
     }

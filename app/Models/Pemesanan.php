@@ -28,6 +28,15 @@ class Pemesanan extends Model
     {
         return $this->belongsTo(Facility::class);
     }
+    public function checkAvailbyDateandFacilityID($date, $facilityID)
+    {
+        $exists = $this->where('facility_id', $facilityID)
+            ->where('tanggal_pemesanan', $date)
+            ->whereIn('status', ['approved', 'active', 'completed'])
+            ->exists();
+
+        return $exists;
+    }
     public function getApprovedRejectedCompletedActive()
     {
         return $this->whereIn('status', ['approved', 'rejected', 'completed', 'active'])->get();
@@ -40,7 +49,7 @@ class Pemesanan extends Model
             return $this->whereIn('status', ['approved', 'rejected'])->count();
         } elseif ($type === 'cancel') {
             return $this->where('status', 'canceled')->count();
-        }else {
+        } else {
             return 0;
         }
     }

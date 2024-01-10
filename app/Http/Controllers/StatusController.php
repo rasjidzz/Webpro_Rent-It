@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KelasPemesanan;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,15 @@ class StatusController extends Controller
     {
         $user = Auth::user();
         $daftarPemesanan = Pemesanan::where('user_id', $user->id)->paginate(5);
+        $daftarPemesananKelas = KelasPemesanan::where('user_id', $user->id)->paginate(5);
+
+        // $daftarPemesanan = Pemesanan::where('user_id', $user->id)->get();
+        // $daftarPemesananKelas = KelasPemesanan::where('user_id', $user->id)->get();
+
+        // $mergedDaftar = $daftarPemesanan->merge($daftarPemesananKelas);
+        // $mergedDaftar->paginate(5);
+
+        // dd($mergedDaftar);
 
         $colors = [];
 
@@ -22,8 +32,10 @@ class StatusController extends Controller
         $data = [
             'title' => 'StatusPemesanan',
             'daftarPemesanan' => $daftarPemesanan,
+            // 'daftarPemesanan' => $mergedDaftar,
             'warna' => $colors,
             'waiting' => Pemesanan::where('user_id', $user->id)->where('status', 'Waiting')->count(),
+            // 'waiting' => Pemesanan::where('user_id', $user->id)->where('status', 'Waiting')->count() + KelasPemesanan::where('user_id', $user->id)->where('status', 'Waiting')->count(),
             'approved' => Pemesanan::where('user_id', $user->id)->where('status', 'Approved')->count(),
             'denied' => Pemesanan::where('user_id', $user->id)->where('status', 'Rejected')->count(),
             'active' => Pemesanan::where('user_id', $user->id)->where('status', 'Active')->count(),
@@ -43,20 +55,20 @@ class StatusController extends Controller
             $color = 'ffa500';
         } elseif ($daftarPemesanan->status === "Rejected") {
             $color = 'ff0000';
-        }elseif($daftarPemesanan->status === "Active"){
+        } elseif ($daftarPemesanan->status === "Active") {
             $color = '006400';
-        }elseif($daftarPemesanan->status === "Completed"){
+        } elseif ($daftarPemesanan->status === "Completed") {
             $color = '000080';
-        }elseif($daftarPemesanan->status === "Canceled"){
+        } elseif ($daftarPemesanan->status === "Canceled") {
             $color = 'ff0000';
         }
         return $color;
     }
-    public function getPemesananDetail(Request $request){
+    public function getPemesananDetail(Request $request)
+    {
         $pesanan_id = $request->input('pesanan_ID');
         $pemesanan = Pemesanan::find($pesanan_id);
         $reason = $pemesanan->note;
         return response()->json($reason);
-
     }
 }
